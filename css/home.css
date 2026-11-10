@@ -1,0 +1,381 @@
+/* ==========================================================
+   home.css  —  홈(index.html) 에만 있는 꾸밈
+   ========================================================== */
+
+/* ---------- 이미지 자리 공통 (홈 안에서만 사용) ---------- */
+.home-img {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: var(--color-sub);
+  box-shadow: var(--shadow-small);
+}
+
+.home-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------- 1. 히어로 : 화면을 꽉 채우는 사진 + 옆으로 넘기기 ---------- */
+.hero {
+  position: relative;
+  height: calc(100vh - var(--header-height));
+  height: calc(100svh - var(--header-height));
+  min-height: 420px;
+  max-height: 960px;
+  overflow: hidden;
+  background: var(--color-brand);
+}
+
+/* 옆으로 넘기는 사진 줄 (스크롤 스냅) */
+.hero-slider {
+  display: flex;
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.hero-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.hero-slide {
+  position: relative;
+  flex: 0 0 100%;
+  height: 100%;
+  scroll-snap-align: start;
+  background: var(--color-brand);
+}
+
+.hero-slide:nth-child(even) {
+  background: var(--color-pink);
+}
+
+.hero-slide img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 이전 · 다음 (사진 위, 오른쪽 위) */
+.hero-controls {
+  position: absolute;
+  top: var(--space-md);
+  right: var(--space-md);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin: 0;
+  color: var(--color-photo-text);
+  font-weight: 700;
+  text-shadow: var(--shadow-text);
+}
+
+.hero-controls a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  font-size: 2rem;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.hero-controls a:hover {
+  color: var(--color-accent);
+}
+
+/* FIND YOUR __ : 사진 맨 위에 흰 글씨, 바탕 없음 */
+.hero-title {
+  position: absolute;
+  right: var(--space-md);
+  bottom: var(--space-lg);
+  z-index: 2;
+  max-width: calc(100% - 2rem);
+  margin: 0;
+  color: var(--color-photo-text);
+  font-size: clamp(2.6rem, 12vw, 6rem);
+  line-height: 1.15;
+  text-align: right;
+  text-shadow: var(--shadow-text);
+  pointer-events: none;
+}
+
+/* 단어가 바뀌는 연출 (CSS 애니메이션) */
+.word-rotator {
+  display: block;
+  height: 1.2em;
+  overflow: hidden;
+}
+
+.word-list {
+  display: block;
+  animation: rotate-words 8s ease-in-out infinite;
+}
+
+.word-list span {
+  display: block;
+  height: 1.2em;
+  line-height: 1.2;
+  text-align: right;
+}
+
+@keyframes rotate-words {
+  0%, 20%   { transform: translateY(0); }
+  25%, 45%  { transform: translateY(-1.2em); }
+  50%, 70%  { transform: translateY(-2.4em); }
+  75%, 95%  { transform: translateY(-3.6em); }
+  100%      { transform: translateY(-4.8em); }
+}
+
+/* ---------- 2. 흐르는 띠 ---------- */
+.ticker {
+  overflow: hidden;
+  padding: var(--space-xs) 0;
+  background: var(--color-accent);
+  white-space: nowrap;
+}
+
+.ticker-track {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  animation: ticker-move 20s linear infinite;
+}
+
+@keyframes ticker-move {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ---------- 3. NEW ---------- */
+.new-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg) var(--space-md);
+}
+
+.new-card a {
+  display: block;
+  text-decoration: none;
+}
+
+.new-card .home-img {
+  aspect-ratio: 3 / 4;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.new-card a:hover .home-img {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-soft);
+}
+
+.new-badge {
+  position: absolute;
+  top: 0.7rem;
+  left: 0.7rem;
+  padding: 0.1em 0.8em;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.new-name {
+  margin: var(--space-sm) 0 0;
+  font-weight: 700;
+}
+
+.new-price {
+  margin: 0;
+  color: var(--color-brand-dark);
+  font-weight: 700;
+}
+
+/* ---------- 4. 브랜드 한 줄 소개 ---------- */
+.brand-teaser {
+  background: var(--color-yellow-soft);
+  text-align: center;
+}
+
+.brand-teaser .section-title {
+  font-size: clamp(1.8rem, 7vw, 3rem);
+}
+
+.brand-teaser p {
+  max-width: 32em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ---------- 5. CATEGORY ---------- */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+}
+
+.category-grid li:last-child {
+  grid-column: 1 / -1;
+}
+
+.category-card {
+  display: block;
+  text-decoration: none;
+}
+
+.category-card .home-img {
+  aspect-ratio: 1 / 1;
+  transition: transform 0.2s ease;
+}
+
+.category-card:hover .home-img {
+  transform: scale(1.04);
+}
+
+.category-name {
+  display: block;
+  margin-top: var(--space-xs);
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+/* ---------- 6. LOOK BOOK ---------- */
+.look-section {
+  background: var(--color-sub);
+}
+
+.look-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 52vw;
+  gap: var(--space-sm);
+}
+
+.look-grid .home-img {
+  height: 100%;
+}
+
+.look-1 {
+  grid-column: 1 / -1;
+}
+
+/* ---------- 7. 이벤트 배너 ---------- */
+.event-banner {
+  padding: var(--space-xl) var(--space-md);
+  border: var(--border-soft);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-small);
+  text-align: center;
+}
+
+.event-label {
+  display: inline-block;
+  margin-bottom: var(--space-sm);
+  padding: 0.1em 0.9em;
+  border-radius: var(--radius-pill);
+  background: var(--color-yellow-soft);
+  font-weight: 700;
+}
+
+.event-title {
+  font-size: clamp(1.8rem, 8vw, 3.2rem);
+}
+
+.event-banner p {
+  margin-bottom: var(--space-md);
+}
+
+/* ==========================================================
+   태블릿 (768px 이상)
+   ========================================================== */
+@media (min-width: 768px) {
+  .hero-title .word-rotator {
+    display: inline-block;
+    vertical-align: bottom;
+  }
+
+  .hero-title {
+    right: var(--space-lg);
+    bottom: var(--space-xl);
+  }
+
+  .hero-controls {
+    right: var(--space-lg);
+  }
+
+  .new-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .category-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .category-grid li:last-child {
+    grid-column: auto;
+  }
+
+  .look-grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 30vw;
+  }
+
+  .look-1 {
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+  }
+
+  .look-5 {
+    grid-column: 2 / 4;
+  }
+}
+
+/* ==========================================================
+   PC (1024px 이상)
+   ========================================================== */
+@media (min-width: 1024px) {
+  .hero-title {
+    right: 4rem;
+    bottom: 4rem;
+  }
+
+  .hero-controls {
+    right: 4rem;
+  }
+
+  .new-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .category-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .look-grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 260px;
+  }
+
+  .look-1 {
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+  }
+
+  .look-5 {
+    grid-column: auto;
+  }
+}

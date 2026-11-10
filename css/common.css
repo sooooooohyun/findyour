@@ -1,0 +1,526 @@
+/* ==========================================================
+   common.css  —  모든 페이지에 똑같이 들어가는 부분
+   (색상 · 글꼴 · 머리말 · 메뉴 · 꼬리말 · 공통 버튼/제목)
+   다른 css 파일은 아래 :root 에 이름 붙인 색만 var(--이름) 으로 사용합니다.
+   ========================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap");
+
+/* ---------- 1. 대표 색 · 글꼴 · 크기 (이름으로 저장) ---------- */
+:root {
+  /* 대표 색 : 아이보리 바탕 + 파스텔 핑크 + 파스텔 노랑 */
+  --color-cream: #fffaf0;        /* 아이보리 : 기본 배경 */
+  --color-surface: #fffdf8;      /* 연한 아이보리 : 카드·입력칸 바탕 */
+  --color-sub: #ffe8dc;          /* 아주 연한 웜 핑크 : 서브 배경 */
+  --color-pink: #ffcdb9;         /* 파스텔 웜 핑크 */
+  --color-brand: #f9a597;        /* 코랄 핑크 : 버튼·강조 */
+  --color-brand-dark: #bf4538;   /* 글자로 쓰는 진한 코랄 (가격 등) */
+  --color-accent: #ffdc7a;       /* 파스텔 노랑 : 강조 */
+  --color-yellow-soft: #fff1c9;  /* 연한 노랑 : 서브 배경 */
+  --color-ink: #4b3832;          /* 글자색 (따뜻한 진갈색) */
+  --color-muted: #7d665f;        /* 흐린 글자 */
+  --color-line: #f3d6c6;         /* 테두리·구분선 */
+  --color-photo-text: #ffffff;   /* 사진 위에 올라가는 글자 (흰색) */
+
+  /* 그림자 */
+  --shadow-soft: 0 8px 24px rgba(249, 165, 151, 0.3);
+  --shadow-small: 0 4px 12px rgba(249, 165, 151, 0.28);
+  --shadow-text: 0 1px 10px rgba(75, 56, 50, 0.6);
+
+  /* 글꼴 */
+  --font-display: "Jua", "Noto Sans KR", "Malgun Gothic", sans-serif;
+  --font-body: "Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+
+  /* 간격 · 모양 */
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+  --space-xl: 3.5rem;
+  --radius-md: 20px;
+  --radius-pill: 999px;
+  --border-soft: 2px solid var(--color-line);
+  --header-height: 64px;
+}
+
+/* ---------- 2. 기본 설정 ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height) + 8px);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-ink);
+  background: var(--color-cream);
+}
+
+img,
+iframe {
+  max-width: 100%;
+}
+
+img {
+  display: block;
+  height: auto;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0 0 var(--space-sm);
+}
+
+p {
+  margin: 0 0 var(--space-md);
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible,
+.nav-toggle:focus-visible + .nav-button {
+  outline: 3px solid var(--color-brand-dark);
+  outline-offset: 3px;
+}
+
+/* 화면에서는 안 보이고 스크린리더만 읽는 글자 */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- 3. 공통 레이아웃 · 제목 · 버튼 ---------- */
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+.section {
+  padding: var(--space-xl) 0;
+}
+
+.section-title {
+  font-size: clamp(2rem, 7vw, 3rem);
+}
+
+.section-desc {
+  color: var(--color-muted);
+  margin-bottom: var(--space-lg);
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.7em 1.7em;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--color-brand);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: var(--shadow-small);
+  transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  background: var(--color-accent);
+  box-shadow: var(--shadow-soft);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-light {
+  background: var(--color-accent);
+}
+
+.btn-light:hover {
+  background: var(--color-brand);
+}
+
+/* 서브 페이지 맨 위 제목 띠 */
+.page-head {
+  padding: var(--space-xl) 0 var(--space-lg);
+  background: var(--color-surface);
+  border-bottom: var(--border-soft);
+  text-align: center;
+}
+
+.page-head h1 {
+  font-size: clamp(2.2rem, 9vw, 3.6rem);
+  margin-bottom: var(--space-xs);
+}
+
+.page-head p {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+/* ---------- 4. 머리말 + 메뉴 (위에 고정) ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--color-cream);
+  border-bottom: var(--border-soft);
+}
+
+.header-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1100px;
+  min-height: var(--header-height);
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+/* 로고는 이미지로 직접 넣습니다 (images/logo.png) */
+.logo {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  text-decoration: none;
+}
+
+.logo img {
+  width: auto;
+  height: 2rem;
+  max-width: 60vw;
+}
+
+/* 휴대폰 : ☰ 버튼 (체크박스는 숨기고 label 을 버튼처럼 사용) */
+.nav-toggle {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  opacity: 0;
+}
+
+.nav-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background: var(--color-accent);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.main-nav {
+  display: none;
+  width: 100%;
+  padding-bottom: var(--space-md);
+}
+
+.nav-toggle:checked ~ .main-nav {
+  display: block;
+  animation: menu-slide 0.3s ease;
+}
+
+@keyframes menu-slide {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.main-nav > ul > li + li {
+  margin-top: var(--space-xs);
+}
+
+.main-nav a {
+  display: block;
+  padding: 0.7em 1em;
+  border: var(--border-soft);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+
+.main-nav a:hover,
+.main-nav a[aria-current="page"] {
+  background: var(--color-brand);
+  border-color: var(--color-brand);
+}
+
+/* SHOP 아래 하위 메뉴 : 휴대폰에서는 작은 알약 모양으로 바로 펼쳐 보임 */
+.sub-menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: var(--space-xs);
+}
+
+.main-nav .sub-menu a {
+  padding: 0.3em 0.9em;
+  border-color: var(--color-yellow-soft);
+  background: var(--color-yellow-soft);
+  font-size: 0.85rem;
+}
+
+.main-nav .sub-menu a:hover,
+.main-nav .sub-menu a[aria-current="page"] {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+}
+
+/* 태블릿 · PC : ☰ 버튼을 없애고 메뉴를 가로로, SHOP 에 마우스를 올리면 하위 메뉴 */
+@media (min-width: 768px) {
+  .nav-button {
+    display: none;
+  }
+
+  .main-nav {
+    display: block;
+    width: auto;
+    padding-bottom: 0;
+  }
+
+  .main-nav > ul {
+    display: flex;
+    gap: var(--space-xs);
+  }
+
+  .main-nav > ul > li + li {
+    margin-top: 0;
+  }
+
+  .main-nav a {
+    padding: 0.4em 1em;
+    border-color: var(--color-cream);
+    background: var(--color-cream);
+  }
+
+  .main-nav a:hover,
+  .main-nav a[aria-current="page"] {
+    border-color: var(--color-brand);
+    background: var(--color-brand);
+  }
+
+  .has-sub {
+    position: relative;
+  }
+
+  .sub-menu {
+    display: flex;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    z-index: 110;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 0.2rem;
+    min-width: 9.5rem;
+    margin-top: 0;
+    padding: var(--space-xs);
+    border: var(--border-soft);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-soft);
+    /* 닫혀 있을 때 : 위쪽으로 접혀서 안 보임 */
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-50%) translateY(-10px) scaleY(0.85);
+    transform-origin: top center;
+    transition: opacity 0.2s ease, transform 0.25s ease, visibility 0s linear 0.25s;
+  }
+
+  /* 열릴 때 : 쭈욱 내려오면서 살짝 튕김 */
+  .has-sub:hover .sub-menu,
+  .has-sub:focus-within .sub-menu {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0) scaleY(1);
+    transition: opacity 0.2s ease, transform 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.3), visibility 0s;
+  }
+
+  /* 메뉴 항목이 하나씩 차르륵 */
+  .sub-menu li {
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+
+  .has-sub:hover .sub-menu li,
+  .has-sub:focus-within .sub-menu li {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.25s ease, transform 0.3s cubic-bezier(0.2, 0.9, 0.3, 1.3);
+  }
+
+  .has-sub:hover .sub-menu li:nth-child(1),
+  .has-sub:focus-within .sub-menu li:nth-child(1) { transition-delay: 0.04s; }
+  .has-sub:hover .sub-menu li:nth-child(2),
+  .has-sub:focus-within .sub-menu li:nth-child(2) { transition-delay: 0.08s; }
+  .has-sub:hover .sub-menu li:nth-child(3),
+  .has-sub:focus-within .sub-menu li:nth-child(3) { transition-delay: 0.12s; }
+  .has-sub:hover .sub-menu li:nth-child(4),
+  .has-sub:focus-within .sub-menu li:nth-child(4) { transition-delay: 0.16s; }
+  .has-sub:hover .sub-menu li:nth-child(5),
+  .has-sub:focus-within .sub-menu li:nth-child(5) { transition-delay: 0.2s; }
+  .has-sub:hover .sub-menu li:nth-child(6),
+  .has-sub:focus-within .sub-menu li:nth-child(6) { transition-delay: 0.24s; }
+  .has-sub:hover .sub-menu li:nth-child(7),
+  .has-sub:focus-within .sub-menu li:nth-child(7) { transition-delay: 0.28s; }
+
+  .main-nav .sub-menu a {
+    padding: 0.4em 0.9em;
+    border-color: var(--color-surface);
+    background: var(--color-surface);
+    font-size: 0.95rem;
+    text-align: left;
+  }
+}
+
+@media (min-width: 1024px) {
+  .main-nav > ul {
+    gap: var(--space-sm);
+  }
+
+  .main-nav a {
+    padding: 0.4em 1.3em;
+  }
+}
+
+/* ---------- 5. 꼬리말 ---------- */
+.site-footer {
+  padding: var(--space-xl) 0 var(--space-lg);
+  background: var(--color-sub);
+  border-top: var(--border-soft);
+}
+
+.footer-grid {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+.footer-logo {
+  margin: 0 0 var(--space-xs);
+}
+
+.footer-logo img {
+  width: auto;
+  height: 2.2rem;
+  max-width: 70vw;
+}
+
+.footer-note {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+.footer-title {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-brand-dark);
+  margin-bottom: var(--space-xs);
+}
+
+.footer-list li + li {
+  margin-top: 0.3rem;
+}
+
+.footer-list a {
+  text-decoration: none;
+}
+
+.footer-list a:hover {
+  color: var(--color-brand-dark);
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  margin-top: var(--space-lg);
+  padding-top: var(--space-md);
+  border-top: var(--border-soft);
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+
+.footer-bottom p {
+  margin: 0 0 var(--space-xs);
+}
+
+.footer-bottom a {
+  margin-right: var(--space-md);
+}
+
+@media (min-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+}
+
+/* 움직임을 줄이고 싶은 사용자 설정 존중 */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

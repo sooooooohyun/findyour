@@ -1,0 +1,161 @@
+/* ==========================================================
+   contact.css  —  문의(contact.html) 에만 있는 꾸밈
+   ========================================================== */
+
+.contact-layout {
+  display: grid;
+  gap: var(--space-xl);
+}
+
+/* ---------- 문의 폼 ---------- */
+.contact-form {
+  padding: var(--space-lg) var(--space-md);
+  border: var(--border-soft);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.form-row {
+  margin-bottom: var(--space-md);
+}
+
+.form-row label,
+.form-label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-weight: 700;
+}
+
+.required {
+  color: var(--color-brand-dark);
+}
+
+.form-row input[type="text"],
+.form-row input[type="email"],
+.form-row input[type="tel"],
+.form-row select,
+.form-row textarea {
+  display: block;
+  width: 100%;
+  padding: 0.7em 0.9em;
+  border: var(--border-soft);
+  border-radius: var(--space-sm);
+  background: var(--color-cream);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-ink);
+}
+
+.form-row textarea {
+  min-height: 9rem;
+  resize: vertical;
+}
+
+.form-row input:focus,
+.form-row select:focus,
+.form-row textarea:focus {
+  background: var(--color-surface);
+  border-color: var(--color-brand-dark);
+}
+
+.form-check {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-xs);
+}
+
+.form-check input {
+  width: 1.3rem;
+  height: 1.3rem;
+  margin-top: 0.2rem;
+  accent-color: var(--color-brand-dark);
+}
+
+.form-check label {
+  margin: 0;
+  font-weight: 400;
+}
+
+.form-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+}
+
+/* ---------- 고객센터 · FAQ ---------- */
+.service-box {
+  margin-bottom: var(--space-lg);
+  padding: var(--space-md);
+  border: var(--border-soft);
+  border-radius: var(--radius-md);
+  background: var(--color-accent);
+}
+
+.service-box h2 {
+  font-size: 1.5rem;
+}
+
+.service-tel {
+  margin-bottom: var(--space-xs);
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+}
+
+.service-box p {
+  margin-bottom: 0.2rem;
+}
+
+.faq-title {
+  font-size: 1.8rem;
+}
+
+.faq-item {
+  margin-bottom: var(--space-sm);
+  border: var(--border-soft);
+  border-radius: var(--space-sm);
+  background: var(--color-surface);
+}
+
+.faq-item summary {
+  padding: var(--space-sm) var(--space-md);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.faq-item summary:hover {
+  background: var(--color-sub);
+}
+
+.faq-item[open] summary {
+  background: var(--color-sub);
+  border-bottom: 2px dashed var(--color-line);
+}
+
+.faq-item p {
+  margin: 0;
+  padding: var(--space-sm) var(--space-md) var(--space-md);
+}
+
+/* 태블릿 : 폼 안의 입력칸을 두 칸씩 */
+@media (min-width: 768px) {
+  .contact-form {
+    padding: var(--space-lg);
+  }
+
+  .form-two {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+  }
+}
+
+/* PC : 폼(왼쪽) + 고객센터·FAQ(오른쪽) */
+@media (min-width: 1024px) {
+  .contact-layout {
+    grid-template-columns: 1.2fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+}
