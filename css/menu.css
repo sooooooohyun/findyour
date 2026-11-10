@@ -12,6 +12,7 @@
   display: none;
   margin-bottom: var(--space-sm);
   font-family: var(--font-display);
+  font-weight: 800;
   font-size: 1.6rem;
 }
 
@@ -88,6 +89,7 @@
   height: 2.6rem;
   border-radius: 50%;
   font-family: var(--font-display);
+  font-weight: 800;
   font-size: 1.2rem;
 }
 
@@ -111,6 +113,7 @@
 .product-price {
   margin-bottom: var(--space-xs);
   font-family: var(--font-display);
+  font-weight: 800;
   font-size: 1.4rem;
   color: var(--color-brand-dark);
 }

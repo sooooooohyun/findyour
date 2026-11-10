@@ -66,34 +66,51 @@
   object-fit: cover;
 }
 
-/* 이전 · 다음 (사진 위, 오른쪽 위) */
-.hero-controls {
+/* 이전 · 다음 : 사진 양 끝, 세로 가운데 */
+.hero-arrow {
   position: absolute;
-  top: var(--space-md);
-  right: var(--space-md);
+  top: 50%;
   z-index: 2;
-  display: flex;
-  align-items: center;
-  gap: var(--space-xs);
-  margin: 0;
-  color: var(--color-photo-text);
-  font-weight: 700;
-  text-shadow: var(--shadow-text);
-}
-
-.hero-controls a {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 44px;
   height: 44px;
+  padding-bottom: 0.2rem;
+  border-radius: 50%;
+  background: var(--color-photo-shade);
+  color: var(--color-photo-text);
   font-size: 2rem;
   line-height: 1;
   text-decoration: none;
+  text-shadow: var(--shadow-text);
+  transform: translateY(-50%);
+  transition: background 0.15s ease, transform 0.15s ease;
 }
 
-.hero-controls a:hover {
-  color: var(--color-accent);
+.hero-arrow:hover {
+  background: var(--color-brand);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.hero-prev {
+  left: var(--space-sm);
+}
+
+.hero-next {
+  right: var(--space-sm);
+}
+
+/* 01 / 05 (왼쪽 아래) */
+.hero-count {
+  position: absolute;
+  bottom: var(--space-lg);
+  left: var(--space-md);
+  z-index: 2;
+  margin: 0;
+  color: var(--color-photo-text);
+  font-weight: 700;
+  text-shadow: var(--shadow-text);
 }
 
 /* FIND YOUR __ : 사진 맨 위에 흰 글씨, 바탕 없음 */
@@ -150,6 +167,7 @@
 .ticker-track {
   display: inline-block;
   font-family: var(--font-display);
+  font-weight: 800;
   font-size: 1.2rem;
   animation: ticker-move 20s linear infinite;
 }
@@ -248,6 +266,7 @@
   display: block;
   margin-top: var(--space-xs);
   font-family: var(--font-display);
+  font-weight: 800;
   font-size: 1.3rem;
   text-align: center;
 }
@@ -313,8 +332,17 @@
     bottom: var(--space-xl);
   }
 
-  .hero-controls {
+  .hero-prev {
+    left: var(--space-lg);
+  }
+
+  .hero-next {
     right: var(--space-lg);
+  }
+
+  .hero-count {
+    left: var(--space-lg);
+    bottom: var(--space-xl);
   }
 
   .new-grid {
@@ -353,8 +381,9 @@
     bottom: 4rem;
   }
 
-  .hero-controls {
-    right: 4rem;
+  .hero-count {
+    left: 4rem;
+    bottom: 4rem;
   }
 
   .new-grid {
