@@ -1,306 +1,404 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>홈 | FIND YOUR __</title>
-  <meta name="description" content="나만의 취향을 발견하는 키치하고 사랑스러운 패션 공간, FIND YOUR __">
-  <link rel="stylesheet" href="css/common.css">
-  <link rel="stylesheet" href="css/home.css">
-</head>
-<body>
-
-  <header class="site-header">
-    <div class="header-inner">
-      <a class="logo" href="index.html">
-        <!-- 이미지 삽입 위치: 로고 (예: images/logo.png) -->
-        <img src="images/logo.svg" alt="FIND YOUR __ 로고">
-      </a>
-      <input type="checkbox" id="nav-toggle" class="nav-toggle">
-      <label for="nav-toggle" class="nav-button" aria-label="메뉴 열기·닫기">☰</label>
-      <nav class="main-nav" aria-label="주 메뉴">
-        <ul>
-          <li><a href="index.html" aria-current="page">홈</a></li>
-          <li class="has-sub">
-            <a href="menu.html">SHOP</a>
-            <ul class="sub-menu">
-              <li><a href="menu.html">BEST</a></li>
-              <li><a href="menu-new.html">NEW</a></li>
-              <li><a href="menu-top.html">TOP</a></li>
-              <li><a href="menu-bottom.html">BOTTOM</a></li>
-              <li><a href="menu-outer.html">OUTER</a></li>
-              <li><a href="menu-dress.html">DRESS</a></li>
-              <li><a href="menu-acc.html">ACC</a></li>
-            </ul>
-          </li>
-          <li><a href="about.html">소개</a></li>
-          <li><a href="location.html">오는 길</a></li>
-          <li><a href="contact.html">문의</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-
-    <!-- 히어로 : 꽉 찬 사진을 옆으로 넘기기 + 맨 위에 흰 글씨 FIND YOUR __ -->
-    <section class="hero" aria-label="메인 비주얼">
-      <ul class="hero-slider" tabindex="0" aria-label="메인 사진 슬라이드">
-        <li class="hero-slide" id="slide-1">
-          <!-- 이미지 삽입 위치: 메인 사진 1 (예: images/main-01.jpg) -->
-          <img src="images/main-01.jpg" alt="메인 비주얼 1">
-          <a class="hero-arrow hero-prev" href="#slide-5" aria-label="이전 사진">‹</a>
-          <a class="hero-arrow hero-next" href="#slide-2" aria-label="다음 사진">›</a>
-          <p class="hero-count">01 / 05</p>
-        </li>
-        <li class="hero-slide" id="slide-2">
-          <!-- 이미지 삽입 위치: 메인 사진 2 (예: images/main-02.jpg) -->
-          <img src="images/main-02.jpg" alt="메인 비주얼 2">
-          <a class="hero-arrow hero-prev" href="#slide-1" aria-label="이전 사진">‹</a>
-          <a class="hero-arrow hero-next" href="#slide-3" aria-label="다음 사진">›</a>
-          <p class="hero-count">02 / 05</p>
-        </li>
-        <li class="hero-slide" id="slide-3">
-          <!-- 이미지 삽입 위치: 메인 사진 3 (예: images/main-03.jpg) -->
-          <img src="images/main-03.jpg" alt="메인 비주얼 3">
-          <a class="hero-arrow hero-prev" href="#slide-2" aria-label="이전 사진">‹</a>
-          <a class="hero-arrow hero-next" href="#slide-4" aria-label="다음 사진">›</a>
-          <p class="hero-count">03 / 05</p>
-        </li>
-        <li class="hero-slide" id="slide-4">
-          <!-- 이미지 삽입 위치: 메인 사진 4 (예: images/main-04.jpg) -->
-          <img src="images/main-04.jpg" alt="메인 비주얼 4">
-          <a class="hero-arrow hero-prev" href="#slide-3" aria-label="이전 사진">‹</a>
-          <a class="hero-arrow hero-next" href="#slide-5" aria-label="다음 사진">›</a>
-          <p class="hero-count">04 / 05</p>
-        </li>
-        <li class="hero-slide" id="slide-5">
-          <!-- 이미지 삽입 위치: 메인 사진 5 (예: images/main-05.jpg) -->
-          <img src="images/main-05.jpg" alt="메인 비주얼 5">
-          <a class="hero-arrow hero-prev" href="#slide-4" aria-label="이전 사진">‹</a>
-          <a class="hero-arrow hero-next" href="#slide-1" aria-label="다음 사진">›</a>
-          <p class="hero-count">05 / 05</p>
-        </li>
-      </ul>
-
-      <h1 class="hero-title" aria-label="FIND YOUR STYLE">FIND YOUR
-        <span class="word-rotator" aria-hidden="true">
-          <span class="word-list">
-            <span>STYLE</span>
-            <span>MOOD</span>
-            <span>VIBE</span>
-            <span>SELF</span>
-            <span>STYLE</span>
-          </span>
-        </span>
-      </h1>
-    </section>
-
-    <!-- 흐르는 띠 (장식) -->
-    <div class="ticker" aria-hidden="true">
-      <div class="ticker-track">
-        ★ NEW DROP ♥ 26F/W ★ FREE SHIPPING ♥ FIND YOUR __ ★ NEW DROP ♥ 26F/W ★ FREE SHIPPING ♥ FIND YOUR __ ★ NEW DROP ♥ 26F/W ★ FREE SHIPPING ♥ FIND YOUR __ ★ NEW DROP ♥ 26F/W ★ FREE SHIPPING ♥ FIND YOUR __
-      </div>
-    </div>
-
-    <!-- NEW -->
-    <section class="section" aria-labelledby="new-title">
-      <div class="container">
-        <h2 id="new-title" class="section-title">NEW</h2>
-        <p class="section-desc">이번 시즌, 가장 먼저 만나는 새로운 아이템을 소개합니다.</p>
-
-        <ul class="new-grid">
-          <li class="new-card">
-            <a href="menu-new.html">
-              <figure class="home-img">
-                <!-- 이미지 삽입 위치: 신상품 카드 1 (예: images/products/new-01.jpg) -->
-                <img src="" alt="신상품 1 - 체리 리본 니트">
-                <span class="new-badge">NEW</span>
-              </figure>
-              <p class="new-name">체리 리본 니트</p>
-              <p class="new-price">34,000원</p>
-            </a>
-          </li>
-          <li class="new-card">
-            <a href="menu-new.html">
-              <figure class="home-img">
-                <!-- 이미지 삽입 위치: 신상품 카드 2 (예: images/products/new-02.jpg) -->
-                <img src="" alt="신상품 2 - 별 자수 맨투맨">
-                <span class="new-badge">NEW</span>
-              </figure>
-              <p class="new-name">별 자수 맨투맨</p>
-              <p class="new-price">38,000원</p>
-            </a>
-          </li>
-          <li class="new-card">
-            <a href="menu-new.html">
-              <figure class="home-img">
-                <!-- 이미지 삽입 위치: 신상품 카드 3 (예: images/products/new-03.jpg) -->
-                <img src="" alt="신상품 3 - 캔디 플리츠 스커트">
-                <span class="new-badge">NEW</span>
-              </figure>
-              <p class="new-name">캔디 플리츠 스커트</p>
-              <p class="new-price">31,000원</p>
-            </a>
-          </li>
-          <li class="new-card">
-            <a href="menu-new.html">
-              <figure class="home-img">
-                <!-- 이미지 삽입 위치: 신상품 카드 4 (예: images/products/new-04.jpg) -->
-                <img src="" alt="신상품 4 - 하트 키링 숄더백">
-                <span class="new-badge">NEW</span>
-              </figure>
-              <p class="new-name">하트 키링 숄더백</p>
-              <p class="new-price">27,000원</p>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- 브랜드 한 줄 소개 -->
-    <section class="section brand-teaser" aria-labelledby="teaser-title">
-      <div class="container">
-        <h2 id="teaser-title" class="section-title">당신의 취향을 찾으세요</h2>
-        <p>사랑스러운 디테일과 개성 있는 디자인으로, 당신만의 스타일을 완성해 드립니다.</p>
-        <a class="btn btn-light" href="about.html">브랜드 스토리 보기</a>
-      </div>
-    </section>
-
-    <!-- CATEGORY -->
-    <section class="section" aria-labelledby="category-title">
-      <div class="container">
-        <h2 id="category-title" class="section-title">CATEGORY</h2>
-        <p class="section-desc">원하시는 카테고리를 선택해 보세요.</p>
-
-        <ul class="category-grid">
-          <li>
-            <a class="category-card" href="menu-top.html">
-              <figure class="home-img">
-                <!-- 이미지 삽입 위치: 카테고리 TOP -->
-                <img src="" alt="TOP 카테고리">
-              </figure>
-              <span class="category-name">TOP</span>
-            </a>
-          </li>
-          <li>
-            <a class="category-card" href="menu-bottom.html">
-              <figure class="home-img">
-                <!-- 이미지 삽입 위치: 카테고리 BOTTOM -->
-                <img src="" alt="BOTTOM 카테고리">
-              </figure>
-              <span class="category-name">BOTTOM</span>
-            </a>
-          </li>
-          <li>
-            <a class="category-card" href="menu-outer.html">
-              <figure class="home-img">
-                <!-- 이미지 삽입 위치: 카테고리 OUTER -->
-                <img src="" alt="OUTER 카테고리">
-              </figure>
-              <span class="category-name">OUTER</span>
-            </a>
-          </li>
-          <li>
-            <a class="category-card" href="menu-dress.html">
-              <figure class="home-img">
-                <!-- 이미지 삽입 위치: 카테고리 DRESS -->
-                <img src="" alt="DRESS 카테고리">
-              </figure>
-              <span class="category-name">DRESS</span>
-            </a>
-          </li>
-          <li>
-            <a class="category-card" href="menu-acc.html">
-              <figure class="home-img">
-                <!-- 이미지 삽입 위치: 카테고리 ACC -->
-                <img src="" alt="ACC 카테고리">
-              </figure>
-              <span class="category-name">ACC</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- LOOK BOOK -->
-    <section class="section look-section" aria-labelledby="look-title">
-      <div class="container">
-        <h2 id="look-title" class="section-title">LOOK BOOK</h2>
-        <p class="section-desc">26F/W</p>
-
-        <div class="look-grid">
-          <figure class="home-img look-1">
-            <!-- 이미지 삽입 위치: 룩북 1 (큰 이미지) -->
-            <img src="images/lookbook/룩북 1.jpg" alt="룩북 1">
-          </figure>
-          <figure class="home-img look-2">
-            <!-- 이미지 삽입 위치: 룩북 2 -->
-            <img src="images/lookbook/룩북 2.jpg" alt="룩북 2">
-          </figure>
-          <figure class="home-img look-3">
-            <!-- 이미지 삽입 위치: 룩북 3 -->
-            <img src="images/lookbook/룩북 3.jpg" alt="룩북 3">
-          </figure>
-          <figure class="home-img look-4">
-            <!-- 이미지 삽입 위치: 룩북 4 -->
-            <img src="images/lookbook/룩북 4.jpg" alt="룩북 4">
-          </figure>
-          <figure class="home-img look-5">
-            <!-- 이미지 삽입 위치: 룩북 5 -->
-            <img src="images/lookbook/룩북 5.jpg" alt="룩북 5">
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <!-- 이벤트 배너 -->
-    <section class="section" aria-labelledby="event-title">
-      <div class="container">
-        <div class="event-banner">
-          <p class="event-label">LAUNCH EVENT</p>
-          <h2 id="event-title" class="event-title">첫 구매 10% 쿠폰 ♥</h2>
-          <p>오픈을 기념하여 첫 구매 고객께 10% 할인 혜택을 드립니다.</p>
-          <a class="btn btn-light" href="menu.html">SHOP 둘러보기</a>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <p class="footer-logo">
-            <!-- 이미지 삽입 위치: 로고 (예: images/logo.png) -->
-            <img src="" alt="FIND YOUR __ 로고">
-          </p>
-          <p class="footer-note">나만의 취향을 발견하는 키치하고 사랑스러운 패션 공간</p>
-        </div>
-        <nav aria-label="꼬리말 메뉴">
-          <p class="footer-title">INFO</p>
-          <ul class="footer-list">
-            <li><a href="about.html">ABOUT</a></li>
-            <li><a href="contact.html">CUSTOMER SERVICE</a></li>
-            <li><a href="contact.html#faq">FAQ</a></li>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>홈 | FIND YOUR __</title>
+    <meta
+      name="description"
+      content="나만의 취향을 발견하는 차분하고 세련된 패션 공간, FIND YOUR __"
+    />
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/home.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="logo" href="index.html">
+          <!-- 이미지 삽입 위치: 로고 (예: images/logo.png) -->
+          <img src="images/logo.svg" alt="FIND YOUR __ 로고" />
+        </a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+        <label for="nav-toggle" class="nav-button" aria-label="메뉴 열기·닫기"
+          >☰</label
+        >
+        <nav class="main-nav" aria-label="주 메뉴">
+          <ul>
+            <li><a href="index.html" aria-current="page">홈</a></li>
+            <li class="has-sub">
+              <a href="menu.html">SHOP</a>
+              <ul class="sub-menu">
+                <li><a href="menu.html">BEST</a></li>
+                <li><a href="menu-new.html">NEW</a></li>
+                <li><a href="menu-top.html">TOP</a></li>
+                <li><a href="menu-bottom.html">BOTTOM</a></li>
+                <li><a href="menu-outer.html">OUTER</a></li>
+                <li><a href="menu-dress.html">DRESS</a></li>
+                <li><a href="menu-acc.html">ACC</a></li>
+              </ul>
+            </li>
+            <li><a href="about.html">소개</a></li>
+            <li><a href="location.html">오는 길</a></li>
+            <li><a href="contact.html">문의</a></li>
           </ul>
         </nav>
-        <div>
-          <p class="footer-title">SNS</p>
-          <ul class="footer-list">
-            <li><a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-            <li><a href="https://www.threads.com/" target="_blank" rel="noopener noreferrer">Threads</a></li>
-            <li><a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">YouTube</a></li>
-          </ul>
+      </div>
+    </header>
+
+    <main>
+      <!-- 히어로 : 꽉 찬 사진을 옆으로 넘기기 + 맨 위에 흰 글씨 FIND YOUR __ -->
+      <section class="hero" aria-label="메인 비주얼">
+        <ul class="hero-slider" tabindex="0" aria-label="메인 사진 슬라이드">
+          <li class="hero-slide" id="slide-1">
+            <!-- 이미지 삽입 위치: 메인 사진 1 (예: images/main-01.jpg) -->
+            <img src="images/main-01.jpg" alt="메인 비주얼 1" />
+            <a
+              class="hero-arrow hero-prev"
+              href="#slide-5"
+              aria-label="이전 사진"
+              >‹</a
+            >
+            <a
+              class="hero-arrow hero-next"
+              href="#slide-2"
+              aria-label="다음 사진"
+              >›</a
+            >
+            <p class="hero-count">01 / 05</p>
+          </li>
+          <li class="hero-slide" id="slide-2">
+            <!-- 이미지 삽입 위치: 메인 사진 2 (예: images/main-02.jpg) -->
+            <img src="images/main-02.jpg" alt="메인 비주얼 2" />
+            <a
+              class="hero-arrow hero-prev"
+              href="#slide-1"
+              aria-label="이전 사진"
+              >‹</a
+            >
+            <a
+              class="hero-arrow hero-next"
+              href="#slide-3"
+              aria-label="다음 사진"
+              >›</a
+            >
+            <p class="hero-count">02 / 05</p>
+          </li>
+          <li class="hero-slide" id="slide-3">
+            <!-- 이미지 삽입 위치: 메인 사진 3 (예: images/main-03.jpg) -->
+            <img src="images/main-03.jpg" alt="메인 비주얼 3" />
+            <a
+              class="hero-arrow hero-prev"
+              href="#slide-2"
+              aria-label="이전 사진"
+              >‹</a
+            >
+            <a
+              class="hero-arrow hero-next"
+              href="#slide-4"
+              aria-label="다음 사진"
+              >›</a
+            >
+            <p class="hero-count">03 / 05</p>
+          </li>
+          <li class="hero-slide" id="slide-4">
+            <!-- 이미지 삽입 위치: 메인 사진 4 (예: images/main-04.jpg) -->
+            <img src="images/main-04.jpg" alt="메인 비주얼 4" />
+            <a
+              class="hero-arrow hero-prev"
+              href="#slide-3"
+              aria-label="이전 사진"
+              >‹</a
+            >
+            <a
+              class="hero-arrow hero-next"
+              href="#slide-5"
+              aria-label="다음 사진"
+              >›</a
+            >
+            <p class="hero-count">04 / 05</p>
+          </li>
+          <li class="hero-slide" id="slide-5">
+            <!-- 이미지 삽입 위치: 메인 사진 5 (예: images/main-05.jpg) -->
+            <img src="images/main-05.jpg" alt="메인 비주얼 5" />
+            <a
+              class="hero-arrow hero-prev"
+              href="#slide-4"
+              aria-label="이전 사진"
+              >‹</a
+            >
+            <a
+              class="hero-arrow hero-next"
+              href="#slide-1"
+              aria-label="다음 사진"
+              >›</a
+            >
+            <p class="hero-count">05 / 05</p>
+          </li>
+        </ul>
+
+        <h1 class="hero-title" aria-label="FIND YOUR STYLE">
+          FIND YOUR
+          <span class="word-rotator" aria-hidden="true">
+            <span class="word-list">
+              <span>STYLE</span>
+              <span>MOOD</span>
+              <span>VIBE</span>
+              <span>SELF</span>
+              <span>STYLE</span>
+            </span>
+          </span>
+        </h1>
+      </section>
+
+      <!-- 흐르는 띠 (장식) -->
+      <div class="ticker" aria-hidden="true">
+        <div class="ticker-track">
+          NEW DROP · 26F/W · FREE SHIPPING · FIND YOUR __ · NEW DROP · 26F/W ·
+          FREE SHIPPING · FIND YOUR __ · NEW DROP · 26F/W · FREE SHIPPING · FIND
+          YOUR __ · ★ NEW DROP ♥ 26F/W ★ FREE SHIPPING ♥ FIND YOUR __
         </div>
       </div>
-      <div class="footer-bottom">
-        <p><a href="#">이용약관</a><a href="#">개인정보 처리방침</a></p>
-        <p>© 2026 FIND YOUR __. 본 사이트는 웹 제작 과제용 가상 사이트입니다.</p>
-      </div>
-    </div>
-  </footer>
 
-</body>
+      <!-- NEW -->
+      <section class="section" aria-labelledby="new-title">
+        <div class="container">
+          <h2 id="new-title" class="section-title">NEW</h2>
+          <p class="section-desc">
+            이번 시즌, 가장 먼저 만나는 새로운 아이템을 소개합니다.
+          </p>
+
+          <ul class="new-grid">
+            <li class="new-card">
+              <a href="menu-new.html">
+                <figure class="home-img">
+                  <!-- 이미지 삽입 위치: 신상품 카드 1 (예: images/products/new-01.jpg) -->
+                  <img
+                    src="images/shop/new 01.jpg"
+                    alt="신상품 1 - 체리 리본 니트"
+                  />
+                  <span class="new-badge">NEW</span>
+                </figure>
+                <p class="new-name">체리 리본 니트</p>
+                <p class="new-price">34,000원</p>
+              </a>
+            </li>
+            <li class="new-card">
+              <a href="menu-new.html">
+                <figure class="home-img">
+                  <!-- 이미지 삽입 위치: 신상품 카드 2 (예: images/products/new-02.jpg) -->
+                  <img
+                    src="images/shop/new 02.jpg"
+                    alt="신상품 2 - 별 자수 맨투맨"
+                  />
+                  <span class="new-badge">NEW</span>
+                </figure>
+                <p class="new-name">별 자수 맨투맨</p>
+                <p class="new-price">38,000원</p>
+              </a>
+            </li>
+            <li class="new-card">
+              <a href="menu-new.html">
+                <figure class="home-img">
+                  <!-- 이미지 삽입 위치: 신상품 카드 3 (예: images/products/new-03.jpg) -->
+                  <img
+                    src="images/shop/new 03.jpg"
+                    alt="신상품 3 - 캔디 플리츠 스커트"
+                  />
+                  <span class="new-badge">NEW</span>
+                </figure>
+                <p class="new-name">캔디 플리츠 스커트</p>
+                <p class="new-price">31,000원</p>
+              </a>
+            </li>
+            <li class="new-card">
+              <a href="menu-new.html">
+                <figure class="home-img">
+                  <!-- 이미지 삽입 위치: 신상품 카드 4 (예: images/products/new-04.jpg) -->
+                  <img
+                    src="images/shop/new 04.jpg"
+                    alt="신상품 4 - 하트 키링 숄더백"
+                  />
+                  <span class="new-badge">NEW</span>
+                </figure>
+                <p class="new-name">하트 키링 숄더백</p>
+                <p class="new-price">27,000원</p>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 브랜드 한 줄 소개 -->
+      <section class="section brand-teaser" aria-labelledby="teaser-title">
+        <div class="container">
+          <h2 id="teaser-title" class="section-title">
+            당신의 취향을 찾으세요
+          </h2>
+          <p>
+            사랑스러운 디테일과 개성 있는 디자인으로, 당신만의 스타일을 완성해
+            드립니다.
+          </p>
+          <a class="btn btn-light" href="about.html">브랜드 스토리 보기</a>
+        </div>
+      </section>
+
+      <!-- CATEGORY -->
+      <section class="section" aria-labelledby="category-title">
+        <div class="container">
+          <h2 id="category-title" class="section-title">CATEGORY</h2>
+          <p class="section-desc">원하시는 카테고리를 선택해 보세요.</p>
+
+          <ul class="category-grid">
+            <li>
+              <a class="category-card" href="menu-top.html">
+                <figure class="home-img">
+                  <!-- 이미지 삽입 위치: 카테고리 TOP -->
+                  <img src="images/top.jpg" alt="TOP 카테고리" />
+                </figure>
+                <span class="category-name">TOP</span>
+              </a>
+            </li>
+            <li>
+              <a class="category-card" href="menu-bottom.html">
+                <figure class="home-img">
+                  <!-- 이미지 삽입 위치: 카테고리 BOTTOM -->
+                  <img src="images/bottom.jpg" alt="BOTTOM 카테고리" />
+                </figure>
+                <span class="category-name">BOTTOM</span>
+              </a>
+            </li>
+            <li>
+              <a class="category-card" href="menu-outer.html">
+                <figure class="home-img">
+                  <!-- 이미지 삽입 위치: 카테고리 OUTER -->
+                  <img src="images/outer.jpg" alt="OUTER 카테고리" />
+                </figure>
+                <span class="category-name">OUTER</span>
+              </a>
+            </li>
+            <li>
+              <a class="category-card" href="menu-dress.html">
+                <figure class="home-img">
+                  <!-- 이미지 삽입 위치: 카테고리 DRESS -->
+                  <img src="images/dress.jpg" alt="DRESS 카테고리" />
+                </figure>
+                <span class="category-name">DRESS</span>
+              </a>
+            </li>
+            <li>
+              <a class="category-card" href="menu-acc.html">
+                <figure class="home-img">
+                  <!-- 이미지 삽입 위치: 카테고리 ACC -->
+                  <img src="images/acc.jpg" alt="ACC 카테고리" />
+                </figure>
+                <span class="category-name">ACC</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- LOOK BOOK -->
+      <section class="section look-section" aria-labelledby="look-title">
+        <div class="container">
+          <h2 id="look-title" class="section-title">LOOK BOOK</h2>
+          <p class="section-desc">26F/W</p>
+
+          <div class="look-grid">
+            <figure class="home-img look-1">
+              <!-- 이미지 삽입 위치: 룩북 1 (큰 이미지) -->
+              <img src="images/lookbook/룩북 1.jpg" alt="룩북 1" />
+            </figure>
+            <figure class="home-img look-2">
+              <!-- 이미지 삽입 위치: 룩북 2 -->
+              <img src="images/lookbook/룩북 2.jpg" alt="룩북 2" />
+            </figure>
+            <figure class="home-img look-3">
+              <!-- 이미지 삽입 위치: 룩북 3 -->
+              <img src="images/lookbook/룩북 3.jpg" alt="룩북 3" />
+            </figure>
+            <figure class="home-img look-4">
+              <!-- 이미지 삽입 위치: 룩북 4 -->
+              <img src="images/lookbook/룩북 4.jpg" alt="룩북 4" />
+            </figure>
+            <figure class="home-img look-5">
+              <!-- 이미지 삽입 위치: 룩북 5 -->
+              <img src="images/lookbook/룩북 5.jpg" alt="룩북 5" />
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- 이벤트 배너 -->
+      <section class="section" aria-labelledby="event-title">
+        <div class="container">
+          <div class="event-banner">
+            <p class="event-label">LAUNCH EVENT</p>
+            <h2 id="event-title" class="event-title">첫 구매 10% 쿠폰</h2>
+            <p>오픈을 기념하여 첫 구매 고객께 10% 할인 혜택을 드립니다.</p>
+            <a class="btn btn-light" href="menu.html">SHOP 둘러보기</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <p class="footer-logo">
+              <!-- 이미지 삽입 위치: 로고 (예: images/logo.png) -->
+              <img src="images/logo.svg" alt="FIND YOUR __ 로고" />
+            </p>
+            <p class="footer-note">
+              나만의 취향을 발견하는 차분하고 세련된 패션 공간
+            </p>
+          </div>
+          <nav aria-label="꼬리말 메뉴">
+            <p class="footer-title">INFO</p>
+            <ul class="footer-list">
+              <li><a href="about.html">ABOUT</a></li>
+              <li><a href="contact.html">CUSTOMER SERVICE</a></li>
+              <li><a href="contact.html#faq">FAQ</a></li>
+            </ul>
+          </nav>
+          <div>
+            <p class="footer-title">SNS</p>
+            <ul class="footer-list">
+              <li>
+                <a
+                  href="https://www.instagram.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Instagram</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.threads.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Threads</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.youtube.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >YouTube</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p><a href="#">이용약관</a><a href="#">개인정보 처리방침</a></p>
+          <p>
+            © 2026 FIND YOUR __. 본 사이트는 웹 제작 과제용 가상 사이트입니다.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>

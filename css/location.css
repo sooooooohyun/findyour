@@ -8,7 +8,6 @@
   border: var(--border-soft);
   border-radius: var(--radius-md);
   background: var(--color-sub);
-  box-shadow: var(--shadow-soft);
 }
 
 .map-frame iframe {
@@ -40,8 +39,9 @@
 }
 
 .shop-info dt {
-  font-weight: 700;
-  color: var(--color-brand-dark);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-muted);
 }
 
 .shop-info dd {
@@ -66,11 +66,11 @@
   border: var(--border-soft);
   border-radius: var(--radius-md);
   background: var(--color-surface);
-  box-shadow: var(--shadow-small);
 }
 
 .way-card h3 {
-  font-size: 1.4rem;
+  font-size: 1.15rem;
+  font-weight: 500;
 }
 
 .way-card p {

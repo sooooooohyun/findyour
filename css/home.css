@@ -9,7 +9,6 @@
   overflow: hidden;
   border-radius: var(--radius-md);
   background: var(--color-sub);
-  box-shadow: var(--shadow-small);
 }
 
 .home-img img {
@@ -26,7 +25,7 @@
   min-height: 420px;
   max-height: 960px;
   overflow: hidden;
-  background: var(--color-brand);
+  background: var(--color-sub);
 }
 
 /* 옆으로 넘기는 사진 줄 (스크롤 스냅) */
@@ -50,7 +49,7 @@
   flex: 0 0 100%;
   height: 100%;
   scroll-snap-align: start;
-  background: var(--color-brand);
+  background: var(--color-sub);
 }
 
 .hero-slide:nth-child(even) {
@@ -77,20 +76,20 @@
   width: 44px;
   height: 44px;
   padding-bottom: 0.2rem;
+  border: 1px solid var(--color-photo-text);
   border-radius: 50%;
-  background: var(--color-photo-shade);
+  background: transparent;
   color: var(--color-photo-text);
-  font-size: 2rem;
+  font-size: 1.6rem;
+  font-weight: 300;
   line-height: 1;
   text-decoration: none;
-  text-shadow: var(--shadow-text);
   transform: translateY(-50%);
-  transition: background 0.15s ease, transform 0.15s ease;
+  transition: background 0.25s ease;
 }
 
 .hero-arrow:hover {
-  background: var(--color-brand);
-  transform: translateY(-50%) scale(1.08);
+  background: var(--color-photo-shade);
 }
 
 .hero-prev {
@@ -109,7 +108,9 @@
   z-index: 2;
   margin: 0;
   color: var(--color-photo-text);
-  font-weight: 700;
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
   text-shadow: var(--shadow-text);
 }
 
@@ -122,7 +123,9 @@
   max-width: calc(100% - 2rem);
   margin: 0;
   color: var(--color-photo-text);
-  font-size: clamp(2.6rem, 12vw, 6rem);
+  font-size: clamp(2.4rem, 11vw, 5.5rem);
+  font-weight: 300;
+  letter-spacing: 0.02em;
   line-height: 1.15;
   text-align: right;
   text-shadow: var(--shadow-text);
@@ -138,7 +141,7 @@
 
 .word-list {
   display: block;
-  animation: rotate-words 8s ease-in-out infinite;
+  animation: rotate-words 10s ease-in-out infinite;
 }
 
 .word-list span {
@@ -149,32 +152,54 @@
 }
 
 @keyframes rotate-words {
-  0%, 20%   { transform: translateY(0); }
-  25%, 45%  { transform: translateY(-1.2em); }
-  50%, 70%  { transform: translateY(-2.4em); }
-  75%, 95%  { transform: translateY(-3.6em); }
-  100%      { transform: translateY(-4.8em); }
+  0%,
+  20% {
+    transform: translateY(0);
+  }
+  25%,
+  45% {
+    transform: translateY(-1.2em);
+  }
+  50%,
+  70% {
+    transform: translateY(-2.4em);
+  }
+  75%,
+  95% {
+    transform: translateY(-3.6em);
+  }
+  100% {
+    transform: translateY(-4.8em);
+  }
 }
 
 /* ---------- 2. 흐르는 띠 ---------- */
 .ticker {
   overflow: hidden;
-  padding: var(--space-xs) 0;
-  background: var(--color-accent);
+  padding: 0.7rem 0;
+  border-top: var(--border-soft);
+  border-bottom: var(--border-soft);
+  background: var(--color-surface);
+  color: var(--color-muted);
   white-space: nowrap;
 }
 
 .ticker-track {
   display: inline-block;
   font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 1.2rem;
-  animation: ticker-move 20s linear infinite;
+  font-weight: 400;
+  font-size: 0.8rem;
+  letter-spacing: 0.25em;
+  animation: ticker-move 40s linear infinite;
 }
 
 @keyframes ticker-move {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 /* ---------- 3. NEW ---------- */
@@ -191,34 +216,43 @@
 
 .new-card .home-img {
   aspect-ratio: 3 / 4;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.new-card a:hover .home-img {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-soft);
+.new-card .home-img img,
+.category-card .home-img img,
+.look-grid .home-img img {
+  transition: opacity 0.3s ease;
+}
+
+.new-card a:hover .home-img img,
+.category-card:hover .home-img img,
+.look-grid .home-img:hover img {
+  opacity: 0.85;
 }
 
 .new-badge {
   position: absolute;
   top: 0.7rem;
   left: 0.7rem;
-  padding: 0.1em 0.8em;
-  border-radius: var(--radius-pill);
-  background: var(--color-accent);
-  font-size: 0.8rem;
-  font-weight: 700;
+  padding: 0.2em 0.7em;
+  border-radius: var(--radius-md);
+  background: var(--color-cream);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
 }
 
 .new-name {
   margin: var(--space-sm) 0 0;
-  font-weight: 700;
+  font-size: 0.95rem;
+  font-weight: 500;
 }
 
 .new-price {
   margin: 0;
-  color: var(--color-brand-dark);
-  font-weight: 700;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  font-weight: 400;
 }
 
 /* ---------- 4. 브랜드 한 줄 소개 ---------- */
@@ -255,19 +289,15 @@
 
 .category-card .home-img {
   aspect-ratio: 1 / 1;
-  transition: transform 0.2s ease;
-}
-
-.category-card:hover .home-img {
-  transform: scale(1.04);
 }
 
 .category-name {
   display: block;
   margin-top: var(--space-xs);
   font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 1.3rem;
+  font-weight: 500;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
   text-align: center;
 }
 
@@ -297,17 +327,16 @@
   border: var(--border-soft);
   border-radius: var(--radius-md);
   background: var(--color-surface);
-  box-shadow: var(--shadow-small);
   text-align: center;
 }
 
 .event-label {
   display: inline-block;
   margin-bottom: var(--space-sm);
-  padding: 0.1em 0.9em;
-  border-radius: var(--radius-pill);
-  background: var(--color-yellow-soft);
-  font-weight: 700;
+  color: var(--color-brand-dark);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
 }
 
 .event-title {
