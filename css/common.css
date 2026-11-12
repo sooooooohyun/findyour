@@ -16,18 +16,18 @@
 /* ---------- 1. 대표 색 · 글꼴 · 크기 (이름으로 저장) ---------- */
 :root {
   /* 대표 색 : 아이보리 · 베이지 · 크림 옐로 계열의 차분한 톤 + 웜 그레이 글자색 */
-  --color-cream: #f2e9dc;        /* 아이보리 베이지 : 기본 배경 */
-  --color-surface: #f2f1dc;      /* 크림 옐로 : 카드·입력칸 바탕 */
-  --color-sub: #f2e5dc;          /* 핑크 베이지 : 서브 배경 */
-  --color-pink: #e9d7cb;         /* 한 톤 진한 핑크 베이지 */
-  --color-brand: #d6c2b3;        /* 포인트 : 샌드 핑크 */
-  --color-brand-dark: #54504d;   /* 강조 글자 (본문과 같은 웜 그레이) */
-  --color-accent: #e4dcb8;       /* 포인트 : 뮤트 버터 */
-  --color-yellow-soft: #f2eedc;  /* 연한 크림 : 서브 배경 */
-  --color-ink: #54504d;          /* 글자색 (웜 그레이) */
-  --color-muted: #77726d;        /* 흐린 글자 */
-  --color-line: #ddd0c2;         /* 테두리·구분선 */
-  --color-photo-text: #ffffff;   /* 사진 위에 올라가는 글자 (흰색) */
+  --color-cream: #f2e9dc; /* 아이보리 베이지 : 기본 배경 */
+  --color-surface: #f2f1dc; /* 크림 옐로 : 카드·입력칸 바탕 */
+  --color-sub: #f2e5dc; /* 핑크 베이지 : 서브 배경 */
+  --color-pink: #e9d7cb; /* 한 톤 진한 핑크 베이지 */
+  --color-brand: #d6c2b3; /* 포인트 : 샌드 핑크 */
+  --color-brand-dark: #54504d; /* 강조 글자 (본문과 같은 웜 그레이) */
+  --color-accent: #e4dcb8; /* 포인트 : 뮤트 버터 */
+  --color-yellow-soft: #f2eedc; /* 연한 크림 : 서브 배경 */
+  --color-ink: #54504d; /* 글자색 (웜 그레이) */
+  --color-muted: #77726d; /* 흐린 글자 */
+  --color-line: #ddd0c2; /* 테두리·구분선 */
+  --color-photo-text: #ffffff; /* 사진 위에 올라가는 글자 (흰색) */
   --color-photo-shade: rgba(84, 80, 77, 0.35); /* 사진 위 버튼 바탕 (반투명) */
 
   /* 그림자 : 거의 보이지 않을 만큼만 */
@@ -36,8 +36,14 @@
   --shadow-text: 0 1px 12px rgba(84, 80, 77, 0.45);
 
   /* 글꼴 */
-  --font-display: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
-  --font-body: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+  --font-display:
+    "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+    system-ui, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic",
+    sans-serif;
+  --font-body:
+    "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+    system-ui, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic",
+    sans-serif;
 
   /* 간격 · 모양 */
   --space-xs: 0.5rem;
@@ -180,7 +186,10 @@ summary:focus-visible,
   text-align: center;
   text-decoration: none;
   cursor: pointer;
-  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
 }
 
 .btn:hover {
@@ -398,7 +407,10 @@ summary:focus-visible,
     opacity: 0;
     pointer-events: none;
     transform: translateX(-50%) translateY(-4px);
-    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0s linear 0.25s;
+    transition:
+      opacity 0.25s ease,
+      transform 0.25s ease,
+      visibility 0s linear 0.25s;
   }
 
   /* 열릴 때 : 부드럽게 나타남 */
@@ -408,7 +420,10 @@ summary:focus-visible,
     opacity: 1;
     pointer-events: auto;
     transform: translateX(-50%) translateY(0);
-    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0s;
+    transition:
+      opacity 0.25s ease,
+      transform 0.25s ease,
+      visibility 0s;
   }
 
   .main-nav .sub-menu a {
@@ -516,5 +531,46 @@ summary:focus-visible,
     animation: none !important;
     transition: none !important;
     scroll-behavior: auto !important;
+  }
+}
+/* ---------- 6. 마우스 커서 ---------- */
+@media (hover: hover) and (pointer: fine) {
+  /* 기본 : 화살표 끝이 (1, 1) 위치 */
+  html,
+  body {
+    cursor:
+      url("../images/cursor1.svg") 1 1,
+      default;
+  }
+
+  /* 눌러서 이동하거나 동작하는 것 */
+  a,
+  button,
+  label,
+  summary,
+  select,
+  input[type="checkbox"],
+  input[type="radio"],
+  input[type="submit"],
+  input[type="reset"],
+  .btn,
+  .nav-button,
+  .hero-arrow {
+    cursor:
+      url("../images/cursor2.svg") 1 1,
+      pointer;
+  }
+
+  /* 글자를 쓰는 칸 : I 모양은 가운데 (7, 16) 가 기준 */
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="search"],
+  input[type="password"],
+  input:not([type]),
+  textarea {
+    cursor:
+      url("../images/cursor3.svg") 7 16,
+      text;
   }
 }

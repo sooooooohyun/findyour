@@ -1,0 +1,29 @@
+<svg width="26" height="44" viewBox="0 0 26 44" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g filter="url(#filter0_d_1_31)">
+<use xlink:href="#stroke0_1_31" fill="#54504D"/>
+<use xlink:href="#stroke1_1_31" fill="#54504D"/>
+<use xlink:href="#stroke2_1_31" fill="#54504D"/>
+<mask id="stroke3_1_31" maskUnits="userSpaceOnUse" x="2.60001" y="3.60001" width="16" height="34" fill="black">
+<rect fill="white" x="2.60001" y="3.60001" width="16" height="34"/>
+<use xlink:href="#stroke0_1_31"/>
+<use xlink:href="#stroke1_1_31"/>
+<use xlink:href="#stroke2_1_31"/>
+</mask>
+<path d="M4.60001 7.60001H16.6C17.1523 7.60001 17.6 7.15229 17.6 6.60001V5.60001C17.6 5.04772 17.1523 4.60001 16.6 4.60001H4.60001C4.04772 4.60001 3.60001 5.04772 3.60001 5.60001V6.60001C3.60001 7.15229 4.04772 7.60001 4.60001 7.60001ZM4.60001 36.6H16.6C17.1523 36.6 17.6 36.1523 17.6 35.6V34.6C17.6 34.0477 17.1523 33.6 16.6 33.6H4.60001C4.04772 33.6 3.60001 34.0477 3.60001 34.6V35.6C3.60001 36.1523 4.04772 36.6 4.60001 36.6ZM9 7.60001L9 33.6C9 34.1523 9.44771 34.6 10 34.6H11C11.5523 34.6 12 34.1523 12 33.6L12 7.60001C12 7.04772 11.5523 6.60001 11 6.60001L10 6.60001C9.44772 6.60001 9 7.04772 9 7.60001Z" stroke-width="2" stroke-linejoin="round" stroke="#F2E5DC" mask="url(#stroke3_1_31)"/>
+</g>
+<defs>
+<filter id="filter0_d_1_31" x="6.19888e-06" y="6.19888e-06" width="25.2" height="43.2" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dx="2" dy="1"/>
+<feGaussianBlur stdDeviation="2.3"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.16 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_31"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_31" result="shape"/>
+</filter>
+<path id="stroke0_1_31" d="M3.60001 5.60001C3.60001 5.04772 4.04772 4.60001 4.60001 4.60001H16.6C17.1523 4.60001 17.6 5.04772 17.6 5.60001V6.60001C17.6 7.15229 17.1523 7.60001 16.6 7.60001H4.60001C4.04772 7.60001 3.60001 7.15229 3.60001 6.60001V5.60001Z"/>
+<path id="stroke1_1_31" d="M3.60001 34.6C3.60001 34.0477 4.04772 33.6 4.60001 33.6H16.6C17.1523 33.6 17.6 34.0477 17.6 34.6V35.6C17.6 36.1523 17.1523 36.6 16.6 36.6H4.60001C4.04772 36.6 3.60001 36.1523 3.60001 35.6V34.6Z"/>
+<path id="stroke2_1_31" d="M11 6.60001C11.5523 6.60001 12 7.04772 12 7.60001L12 33.6C12 34.1523 11.5523 34.6 11 34.6H10C9.44771 34.6 9 34.1523 9 33.6L9 7.60001C9 7.04772 9.44772 6.60001 10 6.60001L11 6.60001Z"/>
+</defs>
+</svg>

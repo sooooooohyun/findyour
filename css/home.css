@@ -2,6 +2,21 @@
    home.css  —  홈(index.html) 에만 있는 꾸밈
    ========================================================== */
 
+/* ---------- 0. 세로 스크롤 스냅 (홈 전용) ----------
+   스크롤을 멈추면 가장 가까운 구역의 맨 위로 자석처럼 붙습니다.
+   proximity : 구역이 화면보다 길 때도 내용이 가려지지 않도록 "가까울 때만" 붙게 함
+   고정 메뉴 높이만큼은 common.css 의 scroll-padding-top 이 알아서 비워 줍니다. */
+html {
+  scroll-snap-type: y proximity;
+}
+
+.hero,
+.ticker,
+main > section,
+.site-footer {
+  scroll-snap-align: start;
+}
+
 /* ---------- 이미지 자리 공통 (홈 안에서만 사용) ---------- */
 .home-img {
   position: relative;
