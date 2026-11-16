@@ -1,0 +1,56 @@
+.mypage-content {
+  max-width: 58rem;
+}
+
+.mypage-content h2 {
+  margin-bottom: var(--space-md);
+  font-size: 1.5rem;
+}
+
+.coupon-list,
+.order-list {
+  display: grid;
+  gap: var(--space-sm);
+  padding: 0;
+  list-style: none;
+}
+
+.coupon-card,
+.order-card {
+  padding: var(--space-md);
+  border: var(--border-soft);
+  background: var(--color-surface);
+}
+
+.coupon-card h3,
+.order-card h3 {
+  margin: 0 0 var(--space-xs);
+  font-size: 1rem;
+}
+
+.coupon-card p,
+.order-card p {
+  margin: 0.3rem 0;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+.coupon-state {
+  color: var(--color-brand-dark);
+  font-weight: 500;
+}
+
+.mypage-orders {
+  scroll-snap-align: none;
+}
+
+.mypage-status:empty {
+  display: none;
+}
+
+@media (max-width: 40rem) {
+  .coupon-card,
+  .order-card {
+    padding: var(--space-sm);
+  }
+}

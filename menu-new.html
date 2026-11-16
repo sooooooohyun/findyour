@@ -39,6 +39,12 @@
             <li><a href="contact.html">문의</a></li>
           </ul>
         </nav>
+        <div class="header-utilities">
+          <a href="cart.html" aria-label="장바구니, 담긴 수량 0개">CART <span data-cart-count>0</span></a>
+          <a href="login.html" data-auth-link>LOGIN</a>
+          <button type="button" data-logout hidden>LOGOUT</button>
+          <span class="sr-only" data-header-status aria-live="polite"></span>
+        </div>
       </div>
     </header>
 
@@ -50,7 +56,7 @@
         </div>
       </section>
 
-      <section class="section" aria-label="신상품 상품 목록">
+      <section class="section shop-product-section" aria-label="신상품 상품 목록">
         <div class="container">
           <div class="shop-layout">
             <nav class="shop-nav" aria-label="SHOP 하위 메뉴">
@@ -66,110 +72,7 @@
               </ul>
             </nav>
 
-            <ul class="product-grid">
-              <li>
-                <a class="product-card" href="contact.html">
-                  <figure class="product-thumb">
-                    <!-- 이미지 삽입 위치: NEW 1 (예: images/products/new-01.jpg) -->
-                    <img
-                      src="images/shop/new 01.jpg"
-                      alt="신상품 1 - 체리 리본 니트"
-                    />
-                    <span class="tag">NEW</span>
-                  </figure>
-                  <div class="product-info">
-                    <h2 class="product-name">체리 리본 니트</h2>
-                    <p class="product-price">34,000원</p>
-                    <span class="product-more">구매 문의하기 →</span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a class="product-card" href="contact.html">
-                  <figure class="product-thumb">
-                    <!-- 이미지 삽입 위치: NEW 2 (예: images/products/new-02.jpg) -->
-                    <img
-                      src="images/shop/new 02.jpg"
-                      alt="신상품 2 - 별 자수 맨투맨"
-                    />
-                    <span class="tag">NEW</span>
-                  </figure>
-                  <div class="product-info">
-                    <h2 class="product-name">별 자수 맨투맨</h2>
-                    <p class="product-price">38,000원</p>
-                    <span class="product-more">구매 문의하기 →</span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a class="product-card" href="contact.html">
-                  <figure class="product-thumb">
-                    <!-- 이미지 삽입 위치: NEW 3 (예: images/products/new-03.jpg) -->
-                    <img
-                      src="images/shop/new 03.jpg"
-                      alt="신상품 3 - 캔디 플리츠 스커트"
-                    />
-                    <span class="tag">NEW</span>
-                  </figure>
-                  <div class="product-info">
-                    <h2 class="product-name">캔디 플리츠 스커트</h2>
-                    <p class="product-price">31,000원</p>
-                    <span class="product-more">구매 문의하기 →</span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a class="product-card" href="contact.html">
-                  <figure class="product-thumb">
-                    <!-- 이미지 삽입 위치: NEW 4 (예: images/products/new-04.jpg) -->
-                    <img
-                      src="images/shop/new 04.jpg"
-                      alt="신상품 4 - 하트 키링 숄더백"
-                    />
-                    <span class="tag">NEW</span>
-                  </figure>
-                  <div class="product-info">
-                    <h2 class="product-name">하트 키링 숄더백</h2>
-                    <p class="product-price">27,000원</p>
-                    <span class="product-more">구매 문의하기 →</span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a class="product-card" href="contact.html">
-                  <figure class="product-thumb">
-                    <!-- 이미지 삽입 위치: NEW 5 (예: images/products/new-05.jpg) -->
-                    <img
-                      src="images/shop/new 05.jpg"
-                      alt="신상품 5 - 크림 퍼프 가디건"
-                    />
-                    <span class="tag">NEW</span>
-                  </figure>
-                  <div class="product-info">
-                    <h2 class="product-name">크림 퍼프 가디건</h2>
-                    <p class="product-price">36,000원</p>
-                    <span class="product-more">구매 문의하기 →</span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a class="product-card" href="contact.html">
-                  <figure class="product-thumb">
-                    <!-- 이미지 삽입 위치: NEW 6 (예: images/products/new-06.jpg) -->
-                    <img
-                      src="images/shop/new 06.jpg"
-                      alt="신상품 6 - 파스텔 스트라이프 셔츠"
-                    />
-                    <span class="tag">NEW</span>
-                  </figure>
-                  <div class="product-info">
-                    <h2 class="product-name">파스텔 스트라이프 셔츠</h2>
-                    <p class="product-price">33,000원</p>
-                    <span class="product-more">구매 문의하기 →</span>
-                  </div>
-                </a>
-              </li>
-            </ul>
+            <ul class="product-grid" data-product-grid data-category="new"></ul>
           </div>
         </div>
       </section>
@@ -233,5 +136,10 @@
         </div>
       </div>
     </footer>
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/product-list.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/common.js"></script>
   </body>
 </html>

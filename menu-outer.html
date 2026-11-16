@@ -39,6 +39,12 @@
             <li><a href="contact.html">문의</a></li>
           </ul>
         </nav>
+        <div class="header-utilities">
+          <a href="cart.html" aria-label="장바구니, 담긴 수량 0개">CART <span data-cart-count>0</span></a>
+          <a href="login.html" data-auth-link>LOGIN</a>
+          <button type="button" data-logout hidden>LOGOUT</button>
+          <span class="sr-only" data-header-status aria-live="polite"></span>
+        </div>
       </div>
     </header>
 
@@ -50,7 +56,7 @@
         </div>
       </section>
 
-      <section class="section" aria-label="아우터 상품 목록">
+      <section class="section shop-product-section" aria-label="아우터 상품 목록">
         <div class="container">
           <div class="shop-layout">
             <nav class="shop-nav" aria-label="SHOP 하위 메뉴">
@@ -66,104 +72,7 @@
               </ul>
             </nav>
 
-            <ul class="product-grid">
-              <li>
-                <a class="product-card" href="contact.html">
-                  <figure class="product-thumb">
-                    <!-- 이미지 삽입 위치: OUTER 1 (예: images/products/outer-01.jpg) -->
-                    <img
-                      src="images/shop/best 05.jpg"
-                      alt="아우터 1 - 버블 숏 패딩"
-                    />
-                  </figure>
-                  <div class="product-info">
-                    <h2 class="product-name">버블 숏 패딩</h2>
-                    <p class="product-price">89,000원</p>
-                    <span class="product-more">구매 문의하기 →</span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a class="product-card" href="contact.html">
-                  <figure class="product-thumb">
-                    <!-- 이미지 삽입 위치: OUTER 2 (예: images/products/outer-02.jpg) -->
-                    <img
-                      src="images/shop/outer 02.jpg"
-                      alt="아우터 2 - 크림 퀼팅 점퍼"
-                    />
-                  </figure>
-                  <div class="product-info">
-                    <h2 class="product-name">크림 퀼팅 점퍼</h2>
-                    <p class="product-price">69,000원</p>
-                    <span class="product-more">구매 문의하기 →</span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a class="product-card" href="contact.html">
-                  <figure class="product-thumb">
-                    <!-- 이미지 삽입 위치: OUTER 3 (예: images/products/outer-03.jpg) -->
-                    <img
-                      src="images/shop/outer 03.jpg"
-                      alt="아우터 3 - 핑크 트위드 재킷"
-                    />
-                  </figure>
-                  <div class="product-info">
-                    <h2 class="product-name">핑크 트위드 재킷</h2>
-                    <p class="product-price">78,000원</p>
-                    <span class="product-more">구매 문의하기 →</span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a class="product-card" href="contact.html">
-                  <figure class="product-thumb">
-                    <!-- 이미지 삽입 위치: OUTER 4 (예: images/products/outer-04.jpg) -->
-                    <img
-                      src="images/shop/outer 04.jpg"
-                      alt="아우터 4 - 체리 니트 집업"
-                    />
-                  </figure>
-                  <div class="product-info">
-                    <h2 class="product-name">체리 니트 집업</h2>
-                    <p class="product-price">45,000원</p>
-                    <span class="product-more">구매 문의하기 →</span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a class="product-card" href="contact.html">
-                  <figure class="product-thumb">
-                    <!-- 이미지 삽입 위치: OUTER 5 (예: images/products/outer-05.jpg) -->
-                    <img
-                      src="images/shop/outer 05.jpg"
-                      alt="아우터 5 - 버터 울 코트"
-                    />
-                  </figure>
-                  <div class="product-info">
-                    <h2 class="product-name">버터 울 코트</h2>
-                    <p class="product-price">119,000원</p>
-                    <span class="product-more">구매 문의하기 →</span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a class="product-card" href="contact.html">
-                  <figure class="product-thumb">
-                    <!-- 이미지 삽입 위치: OUTER 6 (예: images/products/outer-06.jpg) -->
-                    <img
-                      src="images/shop/outer 06.jpg"
-                      alt="아우터 6 - 리본 바람막이"
-                    />
-                  </figure>
-                  <div class="product-info">
-                    <h2 class="product-name">리본 바람막이</h2>
-                    <p class="product-price">52,000원</p>
-                    <span class="product-more">구매 문의하기 →</span>
-                  </div>
-                </a>
-              </li>
-            </ul>
+            <ul class="product-grid" data-product-grid data-category="outer"></ul>
           </div>
         </div>
       </section>
@@ -227,5 +136,10 @@
         </div>
       </div>
     </footer>
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/product-list.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/common.js"></script>
   </body>
 </html>

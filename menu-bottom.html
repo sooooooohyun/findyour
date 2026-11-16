@@ -41,6 +41,12 @@
             <li><a href="contact.html">문의</a></li>
           </ul>
         </nav>
+        <div class="header-utilities">
+          <a href="cart.html" aria-label="장바구니, 담긴 수량 0개">CART <span data-cart-count>0</span></a>
+          <a href="login.html" data-auth-link>LOGIN</a>
+          <button type="button" data-logout hidden>LOGOUT</button>
+          <span class="sr-only" data-header-status aria-live="polite"></span>
+        </div>
       </div>
     </header>
 
@@ -52,7 +58,7 @@
         </div>
       </section>
 
-      <section class="section" aria-label="하의 상품 목록">
+      <section class="section shop-product-section" aria-label="하의 상품 목록">
         <div class="container">
           <div class="shop-layout">
             <nav class="shop-nav" aria-label="SHOP 하위 메뉴">
@@ -70,104 +76,7 @@
               </ul>
             </nav>
 
-            <ul class="product-grid">
-              <li>
-                <a class="product-card" href="contact.html">
-                  <figure class="product-thumb">
-                    <!-- 이미지 삽입 위치: BOTTOM 1 (예: images/products/bottom-01.jpg) -->
-                    <img
-                      src="images/shop/best 03.jpg"
-                      alt="하의 1 - 하트 포켓 데님 팬츠"
-                    />
-                  </figure>
-                  <div class="product-info">
-                    <h2 class="product-name">하트 포켓 데님 팬츠</h2>
-                    <p class="product-price">39,000원</p>
-                    <span class="product-more">구매 문의하기 →</span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a class="product-card" href="contact.html">
-                  <figure class="product-thumb">
-                    <!-- 이미지 삽입 위치: BOTTOM 2 (예: images/products/bottom-02.jpg) -->
-                    <img
-                      src="images/shop/best 04.jpg"
-                      alt="하의 2 - 로즈 플리츠 스커트"
-                    />
-                  </figure>
-                  <div class="product-info">
-                    <h2 class="product-name">로즈 플리츠 스커트</h2>
-                    <p class="product-price">32,000원</p>
-                    <span class="product-more">구매 문의하기 →</span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a class="product-card" href="contact.html">
-                  <figure class="product-thumb">
-                    <!-- 이미지 삽입 위치: BOTTOM 3 (예: images/products/bottom-03.jpg) -->
-                    <img
-                      src="images/shop/bottom 03.jpg"
-                      alt="하의 3 - 크림 와이드 슬랙스"
-                    />
-                  </figure>
-                  <div class="product-info">
-                    <h2 class="product-name">크림 와이드 슬랙스</h2>
-                    <p class="product-price">35,000원</p>
-                    <span class="product-more">구매 문의하기 →</span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a class="product-card" href="contact.html">
-                  <figure class="product-thumb">
-                    <!-- 이미지 삽입 위치: BOTTOM 4 (예: images/products/bottom-04.jpg) -->
-                    <img
-                      src="images/shop/bottom 04.jpg"
-                      alt="하의 4 - 핑크 체크 스커트"
-                    />
-                  </figure>
-                  <div class="product-info">
-                    <h2 class="product-name">핑크 체크 스커트</h2>
-                    <p class="product-price">29,000원</p>
-                    <span class="product-more">구매 문의하기 →</span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a class="product-card" href="contact.html">
-                  <figure class="product-thumb">
-                    <!-- 이미지 삽입 위치: BOTTOM 5 (예: images/products/bottom-05.jpg) -->
-                    <img
-                      src="images/shop/bottom 05.jpg"
-                      alt="하의 5 - 버터 코튼 쇼츠"
-                    />
-                  </figure>
-                  <div class="product-info">
-                    <h2 class="product-name">버터 코튼 쇼츠</h2>
-                    <p class="product-price">25,000원</p>
-                    <span class="product-more">구매 문의하기 →</span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a class="product-card" href="contact.html">
-                  <figure class="product-thumb">
-                    <!-- 이미지 삽입 위치: BOTTOM 6 (예: images/products/bottom-06.jpg) -->
-                    <img
-                      src="images/shop/bottom 06.jpg"
-                      alt="하의 6 - 리본 카고 팬츠"
-                    />
-                  </figure>
-                  <div class="product-info">
-                    <h2 class="product-name">리본 카고 팬츠</h2>
-                    <p class="product-price">42,000원</p>
-                    <span class="product-more">구매 문의하기 →</span>
-                  </div>
-                </a>
-              </li>
-            </ul>
+            <ul class="product-grid" data-product-grid data-category="bottom"></ul>
           </div>
         </div>
       </section>
@@ -231,5 +140,10 @@
         </div>
       </div>
     </footer>
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/product-list.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/common.js"></script>
   </body>
 </html>

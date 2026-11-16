@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ko" class="scroll-proximity">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>주문서 | FIND YOUR __</title>
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/cart.css" />
+    <link rel="stylesheet" href="css/checkout.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="logo" href="index.html"><img src="images/logo.svg" alt="FIND YOUR __ 로고" /></a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+        <label for="nav-toggle" class="nav-button" aria-label="메뉴 열기·닫기">☰</label>
+        <nav class="main-nav" aria-label="주 메뉴">
+          <ul>
+            <li><a href="index.html">홈</a></li>
+            <li class="has-sub"><a href="menu.html">SHOP</a><ul class="sub-menu"><li><a href="menu.html">BEST</a></li><li><a href="menu-new.html">NEW</a></li><li><a href="menu-top.html">TOP</a></li><li><a href="menu-bottom.html">BOTTOM</a></li><li><a href="menu-outer.html">OUTER</a></li><li><a href="menu-dress.html">DRESS</a></li><li><a href="menu-acc.html">ACC</a></li></ul></li>
+            <li><a href="about.html">소개</a></li><li><a href="location.html">오는 길</a></li><li><a href="contact.html">문의</a></li>
+          </ul>
+        </nav>
+        <div class="header-utilities"><a href="cart.html" aria-label="장바구니, 담긴 수량 0개">CART <span data-cart-count>0</span></a><a href="login.html" data-auth-link>LOGIN</a><button type="button" data-logout hidden>LOGOUT</button><span class="sr-only" data-header-status aria-live="polite"></span></div>
+      </div>
+    </header>
+    <main>
+      <section class="page-head" aria-labelledby="page-title"><div class="container"><h1 id="page-title">ORDER</h1><p>배송 정보를 확인하고 주문을 완료해 주세요.</p></div></section>
+      <section class="section" aria-labelledby="checkout-title">
+        <div class="container checkout-content">
+          <div class="cart-empty" data-checkout-empty hidden><p>주문할 상품이 없습니다.</p><a class="btn" href="cart.html">장바구니로 돌아가기</a></div>
+          <form class="checkout-form" data-checkout-form>
+            <h2 id="checkout-title">주문자 정보</h2>
+            <div class="checkout-fields">
+              <label>주문자 이름<input name="buyerName" autocomplete="name" required /></label>
+              <label>이메일<input name="buyerEmail" type="email" autocomplete="email" required /></label>
+              <label>연락처<input name="buyerPhone" type="tel" autocomplete="tel" required /></label>
+              <label>받는 분<input name="recipientName" autocomplete="shipping name" required /></label>
+              <label>받는 분 연락처<input name="recipientPhone" type="tel" autocomplete="shipping tel" required /></label>
+              <label class="checkout-address">주소<input name="address" autocomplete="shipping street-address" required /></label>
+              <label class="checkout-address">상세 주소<input name="addressDetail" autocomplete="address-line2" /></label>
+              <label class="checkout-address">배송 메모<textarea name="shippingMemo" rows="3" maxlength="300"></textarea></label>
+            </div>
+            <fieldset class="payment-methods">
+              <legend>결제수단</legend>
+              <label><input type="radio" name="paymentMethod" value="카드결제" checked /> 카드결제</label>
+              <label><input type="radio" name="paymentMethod" value="무통장입금" /> 무통장입금</label>
+              <label><input type="radio" name="paymentMethod" value="간편결제" /> 간편결제</label>
+            </fieldset>
+            <section class="checkout-summary" aria-labelledby="order-items-title">
+              <h2 id="order-items-title">주문 상품</h2>
+              <ul class="checkout-item-list" data-checkout-items></ul>
+              <p class="preorder-note" data-preorder-shipping-note hidden></p>
+              <div class="shipping-progress"><p data-shipping-message></p><progress data-shipping-progress value="0" aria-label="무료배송 기준까지 상품 금액"></progress></div>
+              <div class="coupon-actions">
+                <button class="btn btn-light" type="button" data-open-coupons>쿠폰 사용</button>
+                <button class="coupon-cancel" type="button" data-cancel-coupon hidden>쿠폰 적용 취소</button>
+                <p class="coupon-member-note" data-coupon-member-note hidden>쿠폰은 로그인한 회원만 사용할 수 있습니다. <a href="login.html">로그인</a> 또는 <a href="signup.html">회원가입</a>해 주세요.</p>
+                <p class="coupon-applied" data-coupon-applied aria-live="polite"></p>
+              </div>
+              <p class="price-row"><span>상품 금액</span><strong data-subtotal></strong></p>
+              <p class="price-row"><span>쿠폰 할인</span><strong data-discount></strong></p>
+              <p class="price-row"><span>배송비</span><strong data-shipping></strong></p>
+              <p class="price-row price-row-total"><span>최종 결제 금액</span><strong data-total></strong></p>
+            </section>
+            <label class="checkout-agree"><input type="checkbox" name="agree" required /> 주문 내용을 확인했으며 개인정보 처리에 동의합니다.</label>
+            <p class="checkout-status" data-checkout-status role="status" aria-live="polite"></p>
+            <button class="btn checkout-submit" type="submit">결제하기</button>
+            <p class="checkout-note">결제수단 선택 후 주문이 완료되며 실제 결제 정보는 입력하지 않습니다.</p>
+          </form>
+        </div>
+      </section>
+      <dialog class="coupon-dialog" data-coupon-dialog aria-labelledby="coupon-dialog-title">
+        <form method="dialog" class="coupon-dialog-inner">
+          <h2 id="coupon-dialog-title">보유 쿠폰</h2>
+          <p>주문당 쿠폰 한 장을 적용할 수 있습니다.</p>
+          <ul data-coupon-options></ul>
+          <div class="coupon-dialog-actions">
+            <button class="btn btn-light" type="button" data-close-coupons>닫기</button>
+            <button class="btn" type="button" data-apply-coupon>적용</button>
+          </div>
+        </form>
+      </dialog>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-grid"><div><p class="footer-logo"><img src="images/logo.svg" alt="FIND YOUR __ 로고" /></p><p class="footer-note">나만의 취향을 발견하는 차분하고 세련된 패션 공간</p></div><nav aria-label="꼬리말 메뉴"><p class="footer-title">INFO</p><ul class="footer-list"><li><a href="about.html">ABOUT</a></li><li><a href="contact.html">CUSTOMER SERVICE</a></li><li><a href="contact.html#faq">FAQ</a></li></ul></nav><div><p class="footer-title">SNS</p><ul class="footer-list"><li><a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a></li><li><a href="https://www.threads.com/" target="_blank" rel="noopener noreferrer">Threads</a></li><li><a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">YouTube</a></li></ul></div></div><div class="footer-bottom"><p><a href="#">이용약관</a><a href="#">개인정보 처리방침</a></p><p>© 2026 FIND YOUR __. 본 사이트는 웹 제작 과제용 가상 사이트입니다.</p></div></div></footer>
+    <script src="js/products.js"></script><script src="js/cart.js"></script><script src="js/pricing.js"></script><script src="js/coupons.js"></script><script src="js/auth.js"></script><script src="js/orders.js"></script><script src="js/common.js"></script><script src="js/checkout.js"></script>
+  </body>
+</html>

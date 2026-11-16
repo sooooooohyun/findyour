@@ -39,6 +39,12 @@
             <li><a href="contact.html">문의</a></li>
           </ul>
         </nav>
+        <div class="header-utilities">
+          <a href="cart.html" aria-label="장바구니, 담긴 수량 0개">CART <span data-cart-count>0</span></a>
+          <a href="login.html" data-auth-link>LOGIN</a>
+          <button type="button" data-logout hidden>LOGOUT</button>
+          <span class="sr-only" data-header-status aria-live="polite"></span>
+        </div>
       </div>
     </header>
 
@@ -50,7 +56,7 @@
         </div>
       </section>
 
-      <section class="section" aria-label="원피스 상품 목록">
+      <section class="section shop-product-section" aria-label="원피스 상품 목록">
         <div class="container">
           <div class="shop-layout">
             <nav class="shop-nav" aria-label="SHOP 하위 메뉴">
@@ -66,104 +72,7 @@
               </ul>
             </nav>
 
-            <ul class="product-grid">
-              <li>
-                <a class="product-card" href="contact.html">
-                  <figure class="product-thumb">
-                    <!-- 이미지 삽입 위치: DRESS 1 (예: images/products/dress-01.jpg) -->
-                    <img
-                      src="images/shop/best 06.jpg"
-                      alt="원피스 1 - 리본 미니 원피스"
-                    />
-                  </figure>
-                  <div class="product-info">
-                    <h2 class="product-name">리본 미니 원피스</h2>
-                    <p class="product-price">49,000원</p>
-                    <span class="product-more">구매 문의하기 →</span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a class="product-card" href="contact.html">
-                  <figure class="product-thumb">
-                    <!-- 이미지 삽입 위치: DRESS 2 (예: images/products/dress-02.jpg) -->
-                    <img
-                      src="images/shop/dress 02.jpg"
-                      alt="원피스 2 - 프릴 샤워 원피스"
-                    />
-                  </figure>
-                  <div class="product-info">
-                    <h2 class="product-name">프릴 샤워 원피스</h2>
-                    <p class="product-price">55,000원</p>
-                    <span class="product-more">구매 문의하기 →</span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a class="product-card" href="contact.html">
-                  <figure class="product-thumb">
-                    <!-- 이미지 삽입 위치: DRESS 3 (예: images/products/dress-03.jpg) -->
-                    <img
-                      src="images/shop/dress 03.jpg"
-                      alt="원피스 3 - 핑크 깅엄 원피스"
-                    />
-                  </figure>
-                  <div class="product-info">
-                    <h2 class="product-name">핑크 깅엄 원피스</h2>
-                    <p class="product-price">52,000원</p>
-                    <span class="product-more">구매 문의하기 →</span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a class="product-card" href="contact.html">
-                  <figure class="product-thumb">
-                    <!-- 이미지 삽입 위치: DRESS 4 (예: images/products/dress-04.jpg) -->
-                    <img
-                      src="images/shop/dress 04.jpg"
-                      alt="원피스 4 - 버터 서스펜더 원피스"
-                    />
-                  </figure>
-                  <div class="product-info">
-                    <h2 class="product-name">버터 서스펜더 원피스</h2>
-                    <p class="product-price">46,000원</p>
-                    <span class="product-more">구매 문의하기 →</span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a class="product-card" href="contact.html">
-                  <figure class="product-thumb">
-                    <!-- 이미지 삽입 위치: DRESS 5 (예: images/products/dress-05.jpg) -->
-                    <img
-                      src="images/shop/dress 05.jpg"
-                      alt="원피스 5 - 하트넥 롱 원피스"
-                    />
-                  </figure>
-                  <div class="product-info">
-                    <h2 class="product-name">하트넥 롱 원피스</h2>
-                    <p class="product-price">58,000원</p>
-                    <span class="product-more">구매 문의하기 →</span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a class="product-card" href="contact.html">
-                  <figure class="product-thumb">
-                    <!-- 이미지 삽입 위치: DRESS 6 (예: images/products/dress-06.jpg) -->
-                    <img
-                      src="images/shop/dress 06.jpg"
-                      alt="원피스 6 - 파스텔 니트 원피스"
-                    />
-                  </figure>
-                  <div class="product-info">
-                    <h2 class="product-name">파스텔 니트 원피스</h2>
-                    <p class="product-price">48,000원</p>
-                    <span class="product-more">구매 문의하기 →</span>
-                  </div>
-                </a>
-              </li>
-            </ul>
+            <ul class="product-grid" data-product-grid data-category="dress"></ul>
           </div>
         </div>
       </section>
@@ -227,5 +136,10 @@
         </div>
       </div>
     </footer>
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/product-list.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/common.js"></script>
   </body>
 </html>

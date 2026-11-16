@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ko" class="scroll-proximity">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>마이페이지 | FIND YOUR __</title>
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/mypage.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="logo" href="index.html">
+          <img src="images/logo.svg" alt="FIND YOUR __ 로고" />
+        </a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+        <label for="nav-toggle" class="nav-button" aria-label="메뉴 열기·닫기">☰</label>
+        <nav class="main-nav" aria-label="주 메뉴">
+          <ul>
+            <li><a href="index.html">홈</a></li>
+            <li class="has-sub">
+              <a href="menu.html">SHOP</a>
+              <ul class="sub-menu">
+                <li><a href="menu.html">BEST</a></li>
+                <li><a href="menu-new.html">NEW</a></li>
+                <li><a href="menu-top.html">TOP</a></li>
+                <li><a href="menu-bottom.html">BOTTOM</a></li>
+                <li><a href="menu-outer.html">OUTER</a></li>
+                <li><a href="menu-dress.html">DRESS</a></li>
+                <li><a href="menu-acc.html">ACC</a></li>
+              </ul>
+            </li>
+            <li><a href="about.html">소개</a></li>
+            <li><a href="location.html">오는 길</a></li>
+            <li><a href="contact.html">문의</a></li>
+          </ul>
+        </nav>
+        <div class="header-utilities">
+          <a href="cart.html" aria-label="장바구니, 담긴 수량 0개">CART <span data-cart-count>0</span></a>
+          <a href="login.html" data-auth-link>LOGIN</a>
+          <button type="button" data-logout hidden>LOGOUT</button>
+          <span class="sr-only" data-header-status aria-live="polite"></span>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="page-head" aria-labelledby="page-title">
+        <div class="container">
+          <h1 id="page-title">MY PAGE</h1>
+          <p data-member-greeting>회원 정보를 불러오는 중입니다.</p>
+        </div>
+      </section>
+      <section class="section" aria-labelledby="coupon-title">
+        <div class="container mypage-content">
+          <h2 id="coupon-title">쿠폰함</h2>
+          <p class="mypage-status" data-mypage-status role="status" aria-live="polite"></p>
+          <ul class="coupon-list" data-coupon-list></ul>
+        </div>
+      </section>
+      <section class="section mypage-orders" aria-labelledby="orders-title">
+        <div class="container mypage-content">
+          <h2 id="orders-title">주문 내역</h2>
+          <ul class="order-list" data-order-list></ul>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div><p class="footer-logo"><img src="images/logo.svg" alt="FIND YOUR __ 로고" /></p><p class="footer-note">나만의 취향을 발견하는 차분하고 세련된 패션 공간</p></div>
+          <nav aria-label="꼬리말 메뉴"><p class="footer-title">INFO</p><ul class="footer-list"><li><a href="about.html">ABOUT</a></li><li><a href="contact.html">CUSTOMER SERVICE</a></li><li><a href="contact.html#faq">FAQ</a></li></ul></nav>
+          <div><p class="footer-title">SNS</p><ul class="footer-list"><li><a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a></li><li><a href="https://www.threads.com/" target="_blank" rel="noopener noreferrer">Threads</a></li><li><a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">YouTube</a></li></ul></div>
+        </div>
+        <div class="footer-bottom"><p><a href="#">이용약관</a><a href="#">개인정보 처리방침</a></p><p>© 2026 FIND YOUR __. 본 사이트는 웹 제작 과제용 가상 사이트입니다.</p></div>
+      </div>
+    </footer>
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/coupons.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/mypage.js"></script>
+  </body>
+</html>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko">
+<html lang="ko" class="scroll-proximity">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -39,6 +39,12 @@
             <li><a href="contact.html" aria-current="page">문의</a></li>
           </ul>
         </nav>
+        <div class="header-utilities">
+          <a href="cart.html" aria-label="장바구니, 담긴 수량 0개">CART <span data-cart-count>0</span></a>
+          <a href="login.html" data-auth-link>LOGIN</a>
+          <button type="button" data-logout hidden>LOGOUT</button>
+          <span class="sr-only" data-header-status aria-live="polite"></span>
+        </div>
       </div>
     </header>
 
@@ -59,7 +65,24 @@
               영업일 기준 1~2일 이내에 답변드리겠습니다.
             </p>
 
-            <form class="contact-form" action="#" method="post">
+            <p
+              class="contact-status"
+              id="contact-status"
+              role="status"
+              aria-live="polite"
+              aria-atomic="true"
+            ></p>
+            <form class="contact-form" id="contact-form" action="#" method="post">
+              <div class="honeypot" aria-hidden="true">
+                <label for="website">웹사이트</label>
+                <input
+                  type="text"
+                  id="website"
+                  name="website"
+                  tabindex="-1"
+                  autocomplete="off"
+                />
+              </div>
               <div class="form-two">
                 <div class="form-row">
                   <label for="name">이름 <span class="required">*</span></label>
@@ -98,6 +121,27 @@
                 />
               </div>
 
+              <div class="form-row email-verification" data-email-verification>
+                <button class="btn btn-light" id="verification-send" type="button">
+                  인증코드 받기
+                </button>
+                <label for="verification-code">이메일 인증코드</label>
+                <input
+                  type="text"
+                  id="verification-code"
+                  name="verificationCode"
+                  inputmode="numeric"
+                  autocomplete="one-time-code"
+                  maxlength="6"
+                  pattern="[0-9]{6}"
+                  aria-describedby="verification-status"
+                />
+                <button class="btn btn-light" id="verification-confirm" type="button">
+                  인증 확인
+                </button>
+                <p id="verification-status" class="verification-status" role="status" aria-live="polite"></p>
+              </div>
+
               <div class="form-row">
                 <label for="type">문의 유형</label>
                 <select id="type" name="type">
@@ -116,6 +160,7 @@
                   id="message"
                   name="message"
                   placeholder="문의하실 내용을 자유롭게 작성해 주세요."
+                  minlength="10"
                   required
                 ></textarea>
               </div>
@@ -129,7 +174,9 @@
               </div>
 
               <div class="form-buttons">
-                <button class="btn" type="submit">문의 보내기</button>
+                <button class="btn" id="contact-submit" type="submit" disabled>
+                  문의 보내기
+                </button>
                 <button class="btn btn-light" type="reset">다시 쓰기</button>
               </div>
             </form>
@@ -236,5 +283,11 @@
         </div>
       </div>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4.4.1/dist/email.min.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/contact.js"></script>
   </body>
 </html>

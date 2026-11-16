@@ -64,9 +64,31 @@
   box-sizing: border-box;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--header-height) + 8px);
+  scroll-snap-type: y mandatory;
+}
+
+html.scroll-proximity {
+  scroll-snap-type: y proximity;
+}
+
+main > section,
+.site-footer,
+.ticker {
+  scroll-snap-align: start;
+  scroll-margin-top: var(--header-height);
+}
+
+.long-section,
+.shop-product-section,
+.product-section {
+  scroll-snap-align: none;
 }
 
 body {
@@ -160,6 +182,11 @@ summary:focus-visible,
 
 .section {
   padding: var(--space-xl) 0;
+}
+
+.preorder-note {
+  color: var(--color-brand-dark);
+  font-size: 0.85rem;
 }
 
 .section-title {
@@ -513,6 +540,33 @@ summary:focus-visible,
   margin-right: var(--space-md);
 }
 
+.header-utilities {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.header-utilities a,
+.header-utilities button {
+  padding: 0.4rem 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-ink);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.header-utilities a:hover,
+.header-utilities button:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 @media (min-width: 768px) {
   .footer-grid {
     grid-template-columns: 2fr 1fr 1fr;
@@ -523,6 +577,7 @@ summary:focus-visible,
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+    scroll-snap-type: y proximity;
   }
 
   *,

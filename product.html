@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>상품 상세 | FIND YOUR __</title>
+    <meta name="description" content="FIND YOUR __ 상품 상세와 리뷰" />
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/product.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="logo" href="index.html">
+          <img src="images/logo.svg" alt="FIND YOUR __ 로고" />
+        </a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+        <label for="nav-toggle" class="nav-button" aria-label="메뉴 열기·닫기"
+          >☰</label
+        >
+        <nav class="main-nav" aria-label="주 메뉴">
+          <ul>
+            <li><a href="index.html">홈</a></li>
+            <li class="has-sub">
+              <a href="menu.html" aria-current="page">SHOP</a>
+              <ul class="sub-menu">
+                <li><a href="menu.html">BEST</a></li>
+                <li><a href="menu-new.html">NEW</a></li>
+                <li><a href="menu-top.html">TOP</a></li>
+                <li><a href="menu-bottom.html">BOTTOM</a></li>
+                <li><a href="menu-outer.html">OUTER</a></li>
+                <li><a href="menu-dress.html">DRESS</a></li>
+                <li><a href="menu-acc.html">ACC</a></li>
+              </ul>
+            </li>
+            <li><a href="about.html">소개</a></li>
+            <li><a href="location.html">오는 길</a></li>
+            <li><a href="contact.html">문의</a></li>
+          </ul>
+        </nav>
+        <div class="header-utilities">
+          <a href="cart.html" aria-label="장바구니, 담긴 수량 0개">CART <span data-cart-count>0</span></a>
+          <a href="login.html" data-auth-link>LOGIN</a>
+          <button type="button" data-logout hidden>LOGOUT</button>
+          <span class="sr-only" data-header-status aria-live="polite"></span>
+        </div>
+      </div>
+    </header>
+
+    <main class="product-main container">
+      <p class="product-breadcrumb" id="product-breadcrumb">
+        <a href="menu.html">SHOP</a> &gt; <span id="breadcrumb-category"></span>
+      </p>
+      <p class="product-message" id="product-message" role="status" hidden>
+        상품을 찾을 수 없습니다.
+        <a href="menu.html">SHOP으로 돌아가기</a>
+      </p>
+
+      <div id="product-page-content">
+        <section class="product-overview" id="details" aria-labelledby="product-name">
+          <figure
+            class="product-image"
+            id="product-image-frame"
+            role="button"
+            tabindex="0"
+            aria-label="상품 이미지 크게 보기"
+          >
+            <img id="product-image" alt="" />
+            <figcaption class="sr-only">
+              마우스를 올리면 확대됩니다. 터치 기기에서는 눌러 크게 볼 수 있습니다.
+            </figcaption>
+          </figure>
+
+          <div class="product-information">
+            <p class="product-category" id="product-category"></p>
+            <h1 id="product-name"></h1>
+            <p class="preorder-tag" id="product-preorder-tag" hidden></p>
+            <p class="preorder-message" id="product-preorder-note" hidden></p>
+            <p class="product-price" id="product-price"></p>
+            <p class="product-description" id="product-description"></p>
+
+            <fieldset class="option-group">
+              <legend>색상</legend>
+              <div class="option-list" id="product-colors"></div>
+            </fieldset>
+            <fieldset class="option-group">
+              <legend>사이즈</legend>
+              <div class="option-list" id="product-sizes"></div>
+            </fieldset>
+
+            <div class="quantity-row">
+              <label for="quantity">수량</label>
+              <div class="quantity-control">
+                <button type="button" id="quantity-decrease" aria-label="수량 줄이기">
+                  −
+                </button>
+                <input id="quantity" type="number" value="1" min="1" max="10" />
+                <button type="button" id="quantity-increase" aria-label="수량 늘리기">
+                  +
+                </button>
+              </div>
+            </div>
+
+            <div class="product-actions">
+              <button class="btn" id="add-to-cart" type="button">장바구니 담기</button>
+              <button class="btn btn-light" id="buy-now" type="button">바로 구매</button>
+            </div>
+            <p class="cart-feedback" id="cart-feedback" role="status" aria-live="polite"></p>
+            <div class="cart-feedback-links" id="cart-feedback-links"></div>
+            <a class="inquiry-button" id="inquiry-link" href="contact.html">
+              구매 문의하기
+            </a>
+
+            <details class="product-accordion">
+              <summary>배송 안내</summary>
+              <p>
+                결제 완료 후 평균 2~3일(영업일 기준) 이내에 받아보실 수
+                있습니다. 도서·산간 지역은 배송이 추가로 소요될 수 있습니다.
+              </p>
+            </details>
+            <details class="product-accordion">
+              <summary>교환 · 반품 안내</summary>
+              <p>
+                상품 수령 후 7일 이내, 착용하지 않은 상태에 한하여 문의
+                페이지에서 접수해 주세요.
+              </p>
+            </details>
+          </div>
+        </section>
+
+        <nav class="product-tabs" aria-label="상품 상세 메뉴">
+          <a href="#detail">DETAIL</a>
+          <a href="#review">REVIEW</a>
+          <a href="#info">INFO</a>
+        </nav>
+
+        <section class="product-section detail-section" id="detail">
+          <h2 class="product-section-title">DETAIL</h2>
+          <div class="detail-image-wrap">
+            <img id="detail-image" alt="" hidden />
+            <p id="detail-image-placeholder" class="detail-placeholder">
+              상품 소개 이미지가 곧 업로드됩니다.
+            </p>
+          </div>
+        </section>
+
+        <section class="product-section review-section" id="review">
+          <h2 class="product-section-title">REVIEW</h2>
+          <div class="review-summary" id="review-summary">
+            <div class="review-average">
+              <p class="review-average-score" id="review-average-score"></p>
+              <p id="review-count"></p>
+            </div>
+            <div class="review-distribution">
+              <h3>별점 분포</h3>
+              <div id="rating-distribution"></div>
+            </div>
+            <div class="review-fit">
+              <h3>핏 평가</h3>
+              <div id="fit-summary"></div>
+            </div>
+          </div>
+
+          <div class="review-controls">
+            <label>
+              정렬
+              <select id="review-sort">
+                <option value="latest">최신순</option>
+                <option value="high">별점 높은순</option>
+                <option value="low">별점 낮은순</option>
+              </select>
+            </label>
+            <label>
+              별점
+              <select id="review-rating-filter">
+                <option value="0">전체</option>
+                <option value="5">5점</option>
+                <option value="4">4점</option>
+                <option value="3">3점</option>
+                <option value="2">2점</option>
+                <option value="1">1점</option>
+              </select>
+            </label>
+            <label class="photo-filter">
+              <input id="photo-review-filter" type="checkbox" />
+              사진 리뷰만
+            </label>
+          </div>
+          <p class="review-data-note">아래 리뷰는 예시 데이터입니다.</p>
+          <ul class="review-list" id="review-list" aria-live="polite"></ul>
+          <p class="review-empty" id="review-empty" hidden>
+            조건에 맞는 리뷰가 없습니다.
+          </p>
+          <button class="btn btn-light review-more" id="review-more" type="button">
+            리뷰 더보기
+          </button>
+
+          <form class="review-form" id="review-form">
+            <h3>리뷰 작성</h3>
+            <p class="review-form-note">
+              작성한 리뷰는 이 기기의 브라우저에만 저장되며 서버로 전송되지 않습니다.
+            </p>
+            <div class="review-form-grid">
+              <label>
+                이름
+                <input name="name" type="text" maxlength="30" required />
+              </label>
+              <label>
+                구매한 사이즈
+                <select name="size" id="review-size" required></select>
+              </label>
+              <label>
+                핏 평가
+                <select name="fit" required>
+                  <option value="정사이즈">정사이즈</option>
+                  <option value="작아요">작아요</option>
+                  <option value="커요">커요</option>
+                </select>
+              </label>
+              <fieldset class="review-rating-input">
+                <legend>별점</legend>
+                <div class="rating-options">
+                  <label><input type="radio" name="rating" value="5" required /> 5</label>
+                  <label><input type="radio" name="rating" value="4" /> 4</label>
+                  <label><input type="radio" name="rating" value="3" /> 3</label>
+                  <label><input type="radio" name="rating" value="2" /> 2</label>
+                  <label><input type="radio" name="rating" value="1" /> 1</label>
+                </div>
+              </fieldset>
+              <label class="review-content-label">
+                리뷰 내용
+                <textarea
+                  name="content"
+                  minlength="10"
+                  maxlength="1000"
+                  required
+                ></textarea>
+              </label>
+            </div>
+            <p id="review-form-status" class="review-form-status" aria-live="polite"></p>
+            <button class="btn" type="submit">리뷰 등록</button>
+          </form>
+        </section>
+
+        <section class="product-section info-section" id="info">
+          <h2 class="product-section-title">INFO</h2>
+          <details class="product-accordion">
+            <summary>배송 안내</summary>
+            <p>
+              결제 완료 후 평균 2~3일(영업일 기준) 이내에 받아보실 수
+              있습니다. 도서·산간 지역은 배송이 추가로 소요될 수 있습니다.
+            </p>
+          </details>
+          <details class="product-accordion">
+            <summary>교환 · 반품 안내</summary>
+            <p>
+              상품 수령 후 7일 이내, 착용하지 않은 상태에 한하여 문의
+              페이지에서 접수해 주세요.
+            </p>
+          </details>
+        </section>
+
+        <section class="product-section related-section" aria-labelledby="related-title">
+          <h2 class="product-section-title" id="related-title">YOU MAY ALSO LIKE</h2>
+          <ul class="related-products" id="related-products"></ul>
+        </section>
+      </div>
+    </main>
+
+    <dialog class="image-dialog" id="image-dialog" aria-label="상품 이미지 크게 보기">
+      <button type="button" id="image-dialog-close" aria-label="이미지 닫기">닫기</button>
+      <img id="dialog-image" alt="" />
+    </dialog>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <p class="footer-logo">
+              <img src="images/logo.svg" alt="FIND YOUR __ 로고" />
+            </p>
+            <p class="footer-note">
+              나만의 취향을 발견하는 차분하고 세련된 패션 공간
+            </p>
+          </div>
+          <nav aria-label="꼬리말 메뉴">
+            <p class="footer-title">INFO</p>
+            <ul class="footer-list">
+              <li><a href="about.html">ABOUT</a></li>
+              <li><a href="contact.html">CUSTOMER SERVICE</a></li>
+              <li><a href="contact.html#faq">FAQ</a></li>
+            </ul>
+          </nav>
+          <div>
+            <p class="footer-title">SNS</p>
+            <ul class="footer-list">
+              <li>
+                <a
+                  href="https://www.instagram.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Instagram</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.threads.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Threads</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.youtube.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >YouTube</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p><a href="#">이용약관</a><a href="#">개인정보 처리방침</a></p>
+          <p>
+            © 2026 FIND YOUR __. 본 사이트는 웹 제작 과제용 가상 사이트입니다.
+          </p>
+        </div>
+      </div>
+    </footer>
+    <script src="js/products.js"></script>
+    <script src="js/reviews.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/product-detail.js"></script>
+  </body>
+</html>

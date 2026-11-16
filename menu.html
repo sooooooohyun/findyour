@@ -39,6 +39,12 @@
             <li><a href="contact.html">문의</a></li>
           </ul>
         </nav>
+        <div class="header-utilities">
+          <a href="cart.html" aria-label="장바구니, 담긴 수량 0개">CART <span data-cart-count>0</span></a>
+          <a href="login.html" data-auth-link>LOGIN</a>
+          <button type="button" data-logout hidden>LOGOUT</button>
+          <span class="sr-only" data-header-status aria-live="polite"></span>
+        </div>
       </div>
     </header>
 
@@ -50,7 +56,7 @@
         </div>
       </section>
 
-      <section class="section" aria-label="베스트 상품 목록">
+      <section class="section shop-product-section" aria-label="베스트 상품 목록">
         <div class="container">
           <div class="shop-layout">
             <nav class="shop-nav" aria-label="SHOP 하위 메뉴">
@@ -66,110 +72,7 @@
               </ul>
             </nav>
 
-            <ul class="product-grid">
-              <li>
-                <a class="product-card" href="contact.html">
-                  <figure class="product-thumb">
-                    <!-- 이미지 삽입 위치: BEST 1 (예: images/products/best-01.jpg) -->
-                    <img
-                      src="images/shop/best 01.jpg"
-                      alt="베스트 1위 - 체리 리본 니트 가디건"
-                    />
-                    <span class="rank">1</span>
-                  </figure>
-                  <div class="product-info">
-                    <h2 class="product-name">체리 리본 니트 가디건</h2>
-                    <p class="product-price">29,000원</p>
-                    <span class="product-more">구매 문의하기 →</span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a class="product-card" href="contact.html">
-                  <figure class="product-thumb">
-                    <!-- 이미지 삽입 위치: BEST 2 (예: images/products/best-02.jpg) -->
-                    <img
-                      src="images/shop/best 02.jpg"
-                      alt="베스트 2위 - 퍼프 슬리브 블라우스"
-                    />
-                    <span class="rank">2</span>
-                  </figure>
-                  <div class="product-info">
-                    <h2 class="product-name">퍼프 슬리브 블라우스</h2>
-                    <p class="product-price">35,000원</p>
-                    <span class="product-more">구매 문의하기 →</span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a class="product-card" href="contact.html">
-                  <figure class="product-thumb">
-                    <!-- 이미지 삽입 위치: BEST 3 (예: images/products/best-03.jpg) -->
-                    <img
-                      src="images/shop/best 03.jpg"
-                      alt="베스트 3위 - 하트 포켓 데님 팬츠"
-                    />
-                    <span class="rank">3</span>
-                  </figure>
-                  <div class="product-info">
-                    <h2 class="product-name">하트 포켓 데님 팬츠</h2>
-                    <p class="product-price">39,000원</p>
-                    <span class="product-more">구매 문의하기 →</span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a class="product-card" href="contact.html">
-                  <figure class="product-thumb">
-                    <!-- 이미지 삽입 위치: BEST 4 (예: images/products/best-04.jpg) -->
-                    <img
-                      src="images/shop/best 04.jpg"
-                      alt="베스트 4위 - 로즈 플리츠 스커트"
-                    />
-                    <span class="rank">4</span>
-                  </figure>
-                  <div class="product-info">
-                    <h2 class="product-name">로즈 플리츠 스커트</h2>
-                    <p class="product-price">32,000원</p>
-                    <span class="product-more">구매 문의하기 →</span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a class="product-card" href="contact.html">
-                  <figure class="product-thumb">
-                    <!-- 이미지 삽입 위치: BEST 5 (예: images/products/best-05.jpg) -->
-                    <img
-                      src="images/shop/best 05.jpg"
-                      alt="베스트 5위 - 버블 숏 패딩"
-                    />
-                    <span class="rank">5</span>
-                  </figure>
-                  <div class="product-info">
-                    <h2 class="product-name">버블 숏 패딩</h2>
-                    <p class="product-price">89,000원</p>
-                    <span class="product-more">구매 문의하기 →</span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a class="product-card" href="contact.html">
-                  <figure class="product-thumb">
-                    <!-- 이미지 삽입 위치: BEST 6 (예: images/products/best-06.jpg) -->
-                    <img
-                      src="images/shop/best 06.jpg"
-                      alt="베스트 6위 - 리본 미니 원피스"
-                    />
-                    <span class="rank">6</span>
-                  </figure>
-                  <div class="product-info">
-                    <h2 class="product-name">리본 미니 원피스</h2>
-                    <p class="product-price">49,000원</p>
-                    <span class="product-more">구매 문의하기 →</span>
-                  </div>
-                </a>
-              </li>
-            </ul>
+            <ul class="product-grid" data-product-grid data-category="best"></ul>
           </div>
         </div>
       </section>
@@ -233,5 +136,10 @@
         </div>
       </div>
     </footer>
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/product-list.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/common.js"></script>
   </body>
 </html>

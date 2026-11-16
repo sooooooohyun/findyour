@@ -10,6 +10,10 @@
     />
     <link rel="stylesheet" href="css/common.css" />
     <link rel="stylesheet" href="css/home.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11.2.10/swiper-bundle.min.css"
+    />
   </head>
   <body>
     <header class="site-header">
@@ -42,99 +46,49 @@
             <li><a href="contact.html">문의</a></li>
           </ul>
         </nav>
+        <div class="header-utilities">
+          <a href="cart.html" aria-label="장바구니, 담긴 수량 0개">CART <span data-cart-count>0</span></a>
+          <a href="login.html" data-auth-link>LOGIN</a>
+          <button type="button" data-logout hidden>LOGOUT</button>
+          <span class="sr-only" data-header-status aria-live="polite"></span>
+        </div>
       </div>
     </header>
 
     <main>
       <!-- 히어로 : 꽉 찬 사진을 옆으로 넘기기 + 맨 위에 흰 글씨 FIND YOUR __ -->
       <section class="hero" aria-label="메인 비주얼">
-        <ul class="hero-slider" tabindex="0" aria-label="메인 사진 슬라이드">
-          <li class="hero-slide" id="slide-1">
-            <!-- 이미지 삽입 위치: 메인 사진 1 (예: images/main-01.jpg) -->
-            <img src="images/main-01.jpg" alt="메인 비주얼 1" />
-            <a
-              class="hero-arrow hero-prev"
-              href="#slide-5"
-              aria-label="이전 사진"
-              >‹</a
-            >
-            <a
-              class="hero-arrow hero-next"
-              href="#slide-2"
-              aria-label="다음 사진"
-              >›</a
-            >
-            <p class="hero-count">01 / 05</p>
-          </li>
-          <li class="hero-slide" id="slide-2">
-            <!-- 이미지 삽입 위치: 메인 사진 2 (예: images/main-02.jpg) -->
-            <img src="images/main-02.jpg" alt="메인 비주얼 2" />
-            <a
-              class="hero-arrow hero-prev"
-              href="#slide-1"
-              aria-label="이전 사진"
-              >‹</a
-            >
-            <a
-              class="hero-arrow hero-next"
-              href="#slide-3"
-              aria-label="다음 사진"
-              >›</a
-            >
-            <p class="hero-count">02 / 05</p>
-          </li>
-          <li class="hero-slide" id="slide-3">
-            <!-- 이미지 삽입 위치: 메인 사진 3 (예: images/main-03.jpg) -->
-            <img src="images/main-03.jpg" alt="메인 비주얼 3" />
-            <a
-              class="hero-arrow hero-prev"
-              href="#slide-2"
-              aria-label="이전 사진"
-              >‹</a
-            >
-            <a
-              class="hero-arrow hero-next"
-              href="#slide-4"
-              aria-label="다음 사진"
-              >›</a
-            >
-            <p class="hero-count">03 / 05</p>
-          </li>
-          <li class="hero-slide" id="slide-4">
-            <!-- 이미지 삽입 위치: 메인 사진 4 (예: images/main-04.jpg) -->
-            <img src="images/main-04.jpg" alt="메인 비주얼 4" />
-            <a
-              class="hero-arrow hero-prev"
-              href="#slide-3"
-              aria-label="이전 사진"
-              >‹</a
-            >
-            <a
-              class="hero-arrow hero-next"
-              href="#slide-5"
-              aria-label="다음 사진"
-              >›</a
-            >
-            <p class="hero-count">04 / 05</p>
-          </li>
-          <li class="hero-slide" id="slide-5">
-            <!-- 이미지 삽입 위치: 메인 사진 5 (예: images/main-05.jpg) -->
-            <img src="images/main-05.jpg" alt="메인 비주얼 5" />
-            <a
-              class="hero-arrow hero-prev"
-              href="#slide-4"
-              aria-label="이전 사진"
-              >‹</a
-            >
-            <a
-              class="hero-arrow hero-next"
-              href="#slide-1"
-              aria-label="다음 사진"
-              >›</a
-            >
-            <p class="hero-count">05 / 05</p>
-          </li>
-        </ul>
+        <div class="hero-slider swiper" aria-label="메인 사진 슬라이드">
+          <div class="swiper-wrapper">
+            <div class="hero-slide swiper-slide">
+              <!-- 이미지 삽입 위치: 메인 사진 1 (예: images/main-01.jpg) -->
+              <img src="images/main-01.jpg" alt="메인 비주얼 1" />
+            </div>
+            <div class="hero-slide swiper-slide">
+              <!-- 이미지 삽입 위치: 메인 사진 2 (예: images/main-02.jpg) -->
+              <img src="images/main-02.jpg" alt="메인 비주얼 2" />
+            </div>
+            <div class="hero-slide swiper-slide">
+              <!-- 이미지 삽입 위치: 메인 사진 3 (예: images/main-03.jpg) -->
+              <img src="images/main-03.jpg" alt="메인 비주얼 3" />
+            </div>
+            <div class="hero-slide swiper-slide">
+              <!-- 이미지 삽입 위치: 메인 사진 4 (예: images/main-04.jpg) -->
+              <img src="images/main-04.jpg" alt="메인 비주얼 4" />
+            </div>
+            <div class="hero-slide swiper-slide">
+              <!-- 이미지 삽입 위치: 메인 사진 5 (예: images/main-05.jpg) -->
+              <img src="images/main-05.jpg" alt="메인 비주얼 5" />
+            </div>
+          </div>
+        </div>
+        <button class="hero-arrow hero-prev" type="button" aria-label="이전 사진">
+          ‹
+        </button>
+        <button class="hero-arrow hero-next" type="button" aria-label="다음 사진">
+          ›
+        </button>
+        <p class="hero-count" aria-live="polite" aria-atomic="true">01 / 05</p>
 
         <h1 class="hero-title" aria-label="FIND YOUR STYLE">
           FIND YOUR
@@ -153,78 +107,20 @@
       <!-- 흐르는 띠 (장식) -->
       <div class="ticker" aria-hidden="true">
         <div class="ticker-track">
-          NEW DROP · 26F/W · FREE SHIPPING · FIND YOUR __ · NEW DROP · 26F/W ·
-          FREE SHIPPING · FIND YOUR __ · NEW DROP · 26F/W · FREE SHIPPING · FIND
-          YOUR __ · ★ NEW DROP ♥ 26F/W ★ FREE SHIPPING ♥ FIND YOUR __
+          NEW DROP 26F/W FREE SHIPPING FIND YOUR __ NEW DROP 26F/W FREE SHIPPING
+          FIND YOUR __ NEW DROP 26F/W FREE SHIPPING FIND YOUR __
         </div>
       </div>
 
       <!-- NEW -->
-      <section class="section" aria-labelledby="new-title">
+      <section class="section long-section" aria-labelledby="new-title">
         <div class="container">
           <h2 id="new-title" class="section-title">NEW</h2>
           <p class="section-desc">
             이번 시즌, 가장 먼저 만나는 새로운 아이템을 소개합니다.
           </p>
 
-          <ul class="new-grid">
-            <li class="new-card">
-              <a href="menu-new.html">
-                <figure class="home-img">
-                  <!-- 이미지 삽입 위치: 신상품 카드 1 (예: images/products/new-01.jpg) -->
-                  <img
-                    src="images/shop/new 01.jpg"
-                    alt="신상품 1 - 체리 리본 니트"
-                  />
-                  <span class="new-badge">NEW</span>
-                </figure>
-                <p class="new-name">체리 리본 니트</p>
-                <p class="new-price">34,000원</p>
-              </a>
-            </li>
-            <li class="new-card">
-              <a href="menu-new.html">
-                <figure class="home-img">
-                  <!-- 이미지 삽입 위치: 신상품 카드 2 (예: images/products/new-02.jpg) -->
-                  <img
-                    src="images/shop/new 02.jpg"
-                    alt="신상품 2 - 별 자수 맨투맨"
-                  />
-                  <span class="new-badge">NEW</span>
-                </figure>
-                <p class="new-name">별 자수 맨투맨</p>
-                <p class="new-price">38,000원</p>
-              </a>
-            </li>
-            <li class="new-card">
-              <a href="menu-new.html">
-                <figure class="home-img">
-                  <!-- 이미지 삽입 위치: 신상품 카드 3 (예: images/products/new-03.jpg) -->
-                  <img
-                    src="images/shop/new 03.jpg"
-                    alt="신상품 3 - 캔디 플리츠 스커트"
-                  />
-                  <span class="new-badge">NEW</span>
-                </figure>
-                <p class="new-name">캔디 플리츠 스커트</p>
-                <p class="new-price">31,000원</p>
-              </a>
-            </li>
-            <li class="new-card">
-              <a href="menu-new.html">
-                <figure class="home-img">
-                  <!-- 이미지 삽입 위치: 신상품 카드 4 (예: images/products/new-04.jpg) -->
-                  <img
-                    src="images/shop/new 04.jpg"
-                    alt="신상품 4 - 하트 키링 숄더백"
-                  />
-                  <span class="new-badge">NEW</span>
-                </figure>
-                <p class="new-name">하트 키링 숄더백</p>
-                <p class="new-price">27,000원</p>
-              </a>
-            </li>
-          </ul>
+          <ul class="new-grid" data-home-new-grid></ul>
         </div>
       </section>
 
@@ -243,7 +139,7 @@
       </section>
 
       <!-- CATEGORY -->
-      <section class="section" aria-labelledby="category-title">
+      <section class="section long-section" aria-labelledby="category-title">
         <div class="container">
           <h2 id="category-title" class="section-title">CATEGORY</h2>
           <p class="section-desc">원하시는 카테고리를 선택해 보세요.</p>
@@ -299,7 +195,7 @@
       </section>
 
       <!-- LOOK BOOK -->
-      <section class="section look-section" aria-labelledby="look-title">
+      <section class="section look-section long-section" aria-labelledby="look-title">
         <div class="container">
           <h2 id="look-title" class="section-title">LOOK BOOK</h2>
           <p class="section-desc">26F/W</p>
@@ -330,7 +226,7 @@
       </section>
 
       <!-- 이벤트 배너 -->
-      <section class="section" aria-labelledby="event-title">
+      <section class="section long-section" aria-labelledby="event-title">
         <div class="container">
           <div class="event-banner">
             <p class="event-label">LAUNCH EVENT</p>
@@ -400,5 +296,12 @@
         </div>
       </div>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11.2.10/swiper-bundle.min.js"></script>
+    <script src="js/hero.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/product-list.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/common.js"></script>
   </body>
 </html>

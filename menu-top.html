@@ -39,6 +39,12 @@
             <li><a href="contact.html">문의</a></li>
           </ul>
         </nav>
+        <div class="header-utilities">
+          <a href="cart.html" aria-label="장바구니, 담긴 수량 0개">CART <span data-cart-count>0</span></a>
+          <a href="login.html" data-auth-link>LOGIN</a>
+          <button type="button" data-logout hidden>LOGOUT</button>
+          <span class="sr-only" data-header-status aria-live="polite"></span>
+        </div>
       </div>
     </header>
 
@@ -50,7 +56,7 @@
         </div>
       </section>
 
-      <section class="section" aria-label="상의 상품 목록">
+      <section class="section shop-product-section" aria-label="상의 상품 목록">
         <div class="container">
           <div class="shop-layout">
             <nav class="shop-nav" aria-label="SHOP 하위 메뉴">
@@ -66,104 +72,7 @@
               </ul>
             </nav>
 
-            <ul class="product-grid">
-              <li>
-                <a class="product-card" href="contact.html">
-                  <figure class="product-thumb">
-                    <!-- 이미지 삽입 위치: TOP 1 (예: images/products/top-01.jpg) -->
-                    <img
-                      src="images/shop/top 01.jpg"
-                      alt="상의 1 - 레몬 크롭 니트"
-                    />
-                  </figure>
-                  <div class="product-info">
-                    <h2 class="product-name">레몬 크롭 니트</h2>
-                    <p class="product-price">28,000원</p>
-                    <span class="product-more">구매 문의하기 →</span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a class="product-card" href="contact.html">
-                  <figure class="product-thumb">
-                    <!-- 이미지 삽입 위치: TOP 2 (예: images/products/top-02.jpg) -->
-                    <img
-                      src="images/shop/top 02.jpg"
-                      alt="상의 2 - 프릴 카라 블라우스"
-                    />
-                  </figure>
-                  <div class="product-info">
-                    <h2 class="product-name">프릴 카라 블라우스</h2>
-                    <p class="product-price">34,000원</p>
-                    <span class="product-more">구매 문의하기 →</span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a class="product-card" href="contact.html">
-                  <figure class="product-thumb">
-                    <!-- 이미지 삽입 위치: TOP 3 (예: images/products/top-03.jpg) -->
-                    <img
-                      src="images/shop/top 03.jpg"
-                      alt="상의 3 - 하트 자수 맨투맨"
-                    />
-                  </figure>
-                  <div class="product-info">
-                    <h2 class="product-name">하트 자수 맨투맨</h2>
-                    <p class="product-price">36,000원</p>
-                    <span class="product-more">구매 문의하기 →</span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a class="product-card" href="contact.html">
-                  <figure class="product-thumb">
-                    <!-- 이미지 삽입 위치: TOP 4 (예: images/products/top-04.jpg) -->
-                    <img
-                      src="images/shop/new 06.jpg"
-                      alt="상의 4 - 파스텔 스트라이프 셔츠"
-                    />
-                  </figure>
-                  <div class="product-info">
-                    <h2 class="product-name">파스텔 스트라이프 셔츠</h2>
-                    <p class="product-price">33,000원</p>
-                    <span class="product-more">구매 문의하기 →</span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a class="product-card" href="contact.html">
-                  <figure class="product-thumb">
-                    <!-- 이미지 삽입 위치: TOP 5 (예: images/products/top-05.jpg) -->
-                    <img
-                      src="images/shop/top 05.jpg"
-                      alt="상의 5 - 리본 슬리브리스"
-                    />
-                  </figure>
-                  <div class="product-info">
-                    <h2 class="product-name">리본 슬리브리스</h2>
-                    <p class="product-price">24,000원</p>
-                    <span class="product-more">구매 문의하기 →</span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a class="product-card" href="contact.html">
-                  <figure class="product-thumb">
-                    <!-- 이미지 삽입 위치: TOP 6 (예: images/products/top-06.jpg) -->
-                    <img
-                      src="images/shop/top 06.jpg"
-                      alt="상의 6 - 버터 컬러 가디건"
-                    />
-                  </figure>
-                  <div class="product-info">
-                    <h2 class="product-name">버터 컬러 가디건</h2>
-                    <p class="product-price">37,000원</p>
-                    <span class="product-more">구매 문의하기 →</span>
-                  </div>
-                </a>
-              </li>
-            </ul>
+            <ul class="product-grid" data-product-grid data-category="top"></ul>
           </div>
         </div>
       </section>
@@ -227,5 +136,10 @@
         </div>
       </div>
     </footer>
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/product-list.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/common.js"></script>
   </body>
 </html>

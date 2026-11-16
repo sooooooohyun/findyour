@@ -39,6 +39,12 @@
             <li><a href="contact.html">문의</a></li>
           </ul>
         </nav>
+        <div class="header-utilities">
+          <a href="cart.html" aria-label="장바구니, 담긴 수량 0개">CART <span data-cart-count>0</span></a>
+          <a href="login.html" data-auth-link>LOGIN</a>
+          <button type="button" data-logout hidden>LOGOUT</button>
+          <span class="sr-only" data-header-status aria-live="polite"></span>
+        </div>
       </div>
     </header>
 
@@ -50,7 +56,7 @@
         </div>
       </section>
 
-      <section class="section" aria-label="소품 상품 목록">
+      <section class="section shop-product-section" aria-label="소품 상품 목록">
         <div class="container">
           <div class="shop-layout">
             <nav class="shop-nav" aria-label="SHOP 하위 메뉴">
@@ -66,104 +72,7 @@
               </ul>
             </nav>
 
-            <ul class="product-grid">
-              <li>
-                <a class="product-card" href="contact.html">
-                  <figure class="product-thumb">
-                    <!-- 이미지 삽입 위치: ACC 1 (예: images/products/acc-01.jpg) -->
-                    <img
-                      src="images/shop/new 04.jpg"
-                      alt="소품 1 - 하트 키링 숄더백"
-                    />
-                  </figure>
-                  <div class="product-info">
-                    <h2 class="product-name">하트 키링 숄더백</h2>
-                    <p class="product-price">27,000원</p>
-                    <span class="product-more">구매 문의하기 →</span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a class="product-card" href="contact.html">
-                  <figure class="product-thumb">
-                    <!-- 이미지 삽입 위치: ACC 2 (예: images/products/acc-02.jpg) -->
-                    <img
-                      src="images/shop/acc 02.jpg"
-                      alt="소품 2 - 체리 헤어핀 세트"
-                    />
-                  </figure>
-                  <div class="product-info">
-                    <h2 class="product-name">체리 헤어핀 세트</h2>
-                    <p class="product-price">9,000원</p>
-                    <span class="product-more">구매 문의하기 →</span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a class="product-card" href="contact.html">
-                  <figure class="product-thumb">
-                    <!-- 이미지 삽입 위치: ACC 3 (예: images/products/acc-03.jpg) -->
-                    <img
-                      src="images/shop/acc 03.jpg"
-                      alt="소품 3 - 리본 머리끈"
-                    />
-                  </figure>
-                  <div class="product-info">
-                    <h2 class="product-name">리본 머리끈</h2>
-                    <p class="product-price">5,000원</p>
-                    <span class="product-more">구매 문의하기 →</span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a class="product-card" href="contact.html">
-                  <figure class="product-thumb">
-                    <!-- 이미지 삽입 위치: ACC 4 (예: images/products/acc-04.jpg) -->
-                    <img
-                      src="images/shop/acc 04.jpg"
-                      alt="소품 4 - 별 모양 귀걸이"
-                    />
-                  </figure>
-                  <div class="product-info">
-                    <h2 class="product-name">별 모양 귀걸이</h2>
-                    <p class="product-price">12,000원</p>
-                    <span class="product-more">구매 문의하기 →</span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a class="product-card" href="contact.html">
-                  <figure class="product-thumb">
-                    <!-- 이미지 삽입 위치: ACC 5 (예: images/products/acc-05.jpg) -->
-                    <img
-                      src="images/shop/acc 05.jpg"
-                      alt="소품 5 - 파스텔 퀼팅 파우치"
-                    />
-                  </figure>
-                  <div class="product-info">
-                    <h2 class="product-name">파스텔 퀼팅 파우치</h2>
-                    <p class="product-price">18,000원</p>
-                    <span class="product-more">구매 문의하기 →</span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a class="product-card" href="contact.html">
-                  <figure class="product-thumb">
-                    <!-- 이미지 삽입 위치: ACC 6 (예: images/products/acc-06.jpg) -->
-                    <img
-                      src="images/shop/acc 06.jpg"
-                      alt="소품 6 - 버터 니트 비니"
-                    />
-                  </figure>
-                  <div class="product-info">
-                    <h2 class="product-name">버터 니트 비니</h2>
-                    <p class="product-price">16,000원</p>
-                    <span class="product-more">구매 문의하기 →</span>
-                  </div>
-                </a>
-              </li>
-            </ul>
+            <ul class="product-grid" data-product-grid data-category="acc"></ul>
           </div>
         </div>
       </section>
@@ -227,5 +136,10 @@
         </div>
       </div>
     </footer>
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/product-list.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/common.js"></script>
   </body>
 </html>

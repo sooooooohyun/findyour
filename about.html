@@ -39,6 +39,14 @@
             <li><a href="contact.html">문의</a></li>
           </ul>
         </nav>
+        <div class="header-utilities">
+          <a href="cart.html" aria-label="장바구니, 담긴 수량 0개"
+            >CART <span data-cart-count>0</span></a
+          >
+          <a href="login.html" data-auth-link>LOGIN</a>
+          <button type="button" data-logout hidden>LOGOUT</button>
+          <span class="sr-only" data-header-status aria-live="polite"></span>
+        </div>
       </div>
     </header>
 
@@ -51,7 +59,7 @@
       </section>
 
       <!-- 브랜드 소개 -->
-      <section class="section" aria-labelledby="intro-title">
+      <section class="section long-section" aria-labelledby="intro-title">
         <div class="container about-intro">
           <figure class="about-photo">
             <!-- 이미지 삽입 위치: 브랜드 무드 (예: images/about.jpg) -->
@@ -83,7 +91,10 @@
       </section>
 
       <!-- 브랜드 가치 -->
-      <section class="section value-section" aria-labelledby="value-title">
+      <section
+        class="section value-section long-section"
+        aria-labelledby="value-title"
+      >
         <div class="container">
           <h2 id="value-title" class="section-title">OUR VALUES</h2>
           <p class="section-desc">우리가 소중히 여기는 세 가지 가치입니다.</p>
@@ -118,26 +129,56 @@
       </section>
 
       <!-- 브랜드 이야기 -->
-      <section class="section" aria-labelledby="story-title">
+      <section
+        class="section story-section long-section"
+        aria-labelledby="story-title"
+      >
         <div class="container">
           <h2 id="story-title" class="section-title">STORY</h2>
           <p class="section-desc">브랜드의 발자취</p>
 
           <ol class="story-list">
             <li class="story-item">
-              <span class="story-year">2024</span>
-              <p>
-                “사랑스러운 옷을 합리적인 가격에.” 작은 온라인 스토어로 첫걸음을
-                내디뎠습니다.
-              </p>
+              <div class="story-content">
+                <span class="story-year">2024.03</span>
+                <p>온라인 스토어를 열고 첫 상품을 소개했습니다.</p>
+              </div>
             </li>
             <li class="story-item">
-              <span class="story-year">2025</span>
-              <p>첫 시즌 룩북을 공개하고, SNS에서 많은 사랑을 받았습니다.</p>
+              <div class="story-content">
+                <span class="story-year">2024.09</span>
+                <p>고객님의 의견을 상품 안내와 응대에 반영하기 시작했습니다.</p>
+              </div>
             </li>
             <li class="story-item">
-              <span class="story-year">2026</span>
-              <p>오프라인 쇼룸을 열고, 더 많은 분들과 직접 만나고 있습니다.</p>
+              <div class="story-content">
+                <span class="story-year">2025.02</span>
+                <p>브랜드의 첫 시즌 룩북을 공개했습니다.</p>
+              </div>
+            </li>
+            <li class="story-item">
+              <div class="story-content">
+                <span class="story-year">2025.08</span>
+                <p>계절의 분위기를 담은 새로운 컬렉션을 선보였습니다.</p>
+              </div>
+            </li>
+            <li class="story-item">
+              <div class="story-content">
+                <span class="story-year">2026.02</span>
+                <p>온라인에서 확인하기 편하도록 상품 정보를 다듬었습니다.</p>
+              </div>
+            </li>
+            <li class="story-item">
+              <div class="story-content">
+                <span class="story-year">2026.06</span>
+                <p>성수에 오프라인 쇼룸을 열고 직접 인사드리고 있습니다.</p>
+              </div>
+            </li>
+            <li class="story-item">
+              <div class="story-content">
+                <span class="story-year">2026.10</span>
+                <p>쇼룸에서 새 컬렉션을 소개하며 고객님을 만나고 있습니다.</p>
+              </div>
             </li>
           </ol>
         </div>
@@ -202,5 +243,10 @@
         </div>
       </div>
     </footer>
+    <script src="js/about.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/common.js"></script>
   </body>
 </html>

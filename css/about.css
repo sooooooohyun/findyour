@@ -85,19 +85,62 @@
 
 /* 브랜드 이야기 연표 */
 .story-list {
-  max-width: 640px;
+  position: relative;
+  max-width: 860px;
   margin: 0 auto;
 }
 
+.story-list::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: var(--color-line);
+  content: "";
+  transform: translateX(-50%);
+}
+
 .story-item {
+  position: relative;
   display: grid;
-  grid-template-columns: 4.5rem 1fr;
+  grid-template-columns: minmax(0, 1fr) 2.5rem minmax(0, 1fr);
   gap: var(--space-md);
   padding: var(--space-md) 0;
-  border-bottom: 1px solid var(--color-line);
+}
+
+.story-item::before {
+  z-index: 1;
+  grid-column: 2;
+  grid-row: 1;
+  align-self: start;
+  justify-self: center;
+  width: 0.65rem;
+  height: 0.65rem;
+  margin-top: 0.45rem;
+  border: var(--border-soft);
+  border-radius: var(--radius-pill);
+  background: var(--color-cream);
+  content: "";
+}
+
+.story-content {
+  grid-row: 1;
+  min-width: 0;
+}
+
+.story-item:nth-child(odd) .story-content {
+  grid-column: 1;
+  text-align: right;
+}
+
+.story-item:nth-child(even) .story-content {
+  grid-column: 3;
 }
 
 .story-year {
+  display: block;
+  margin-bottom: var(--space-xs);
   font-family: var(--font-display);
   font-weight: 400;
   font-size: 1.2rem;
@@ -107,6 +150,53 @@
 
 .story-item p {
   margin: 0;
+}
+
+.story-list.is-animated .story-item {
+  opacity: 0;
+  transform: translateX(-1rem);
+  transition:
+    opacity 0.55s ease-out,
+    transform 0.55s ease-out;
+}
+
+.story-list.is-animated .story-item:nth-child(even) {
+  transform: translateX(1rem);
+}
+
+.story-list.is-animated .story-item.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media (max-width: 767px) {
+  .story-list {
+    padding-left: 1.2rem;
+  }
+
+  .story-list::before {
+    left: 0.3rem;
+  }
+
+  .story-item {
+    grid-template-columns: 1.5rem minmax(0, 1fr);
+    gap: var(--space-sm);
+  }
+
+  .story-item::before {
+    grid-column: 1;
+  }
+
+  .story-item:nth-child(odd) .story-content,
+  .story-item:nth-child(even) .story-content {
+    grid-column: 2;
+    text-align: left;
+  }
+
+  .story-list.is-animated .story-item,
+  .story-list.is-animated .story-item:nth-child(even) {
+    transform: translateX(-1rem);
+  }
 }
 
 /* 태블릿 */
