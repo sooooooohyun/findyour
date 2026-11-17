@@ -75,6 +75,7 @@
       });
     }
     writeCart(items);
+    document.dispatchEvent(new Event("fy:cart-item-added"));
   }
 
   function updateQuantity(key, quantity) {

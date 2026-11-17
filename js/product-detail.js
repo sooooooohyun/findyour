@@ -156,6 +156,25 @@
   ).matches;
   const imageDialog = document.querySelector("#image-dialog");
   const dialogImage = document.querySelector("#dialog-image");
+  const imageMotionQuery = window.matchMedia(
+    "(prefers-reduced-motion: no-preference)",
+  );
+  const zoomState = {
+    x: 0,
+    y: 0,
+    scale: 1,
+    scaleStart: 1,
+    scaleStartedAt: 0,
+    targetPointerX: 0,
+    targetPointerY: 0,
+    targetScale: 1,
+  };
+  let imageReady = productImage.complete && productImage.naturalWidth > 0;
+  let pointerInside = false;
+  let frameWidth = 0;
+  let frameHeight = 0;
+  let zoomAnimation = null;
+  let animationFrame = 0;
 
   function openImageDialog() {
     dialogImage.src = productImage.src;
@@ -163,27 +182,135 @@
     imageDialog.showModal();
   }
 
-  if (canHover) {
-    imageFrame.addEventListener("pointermove", (event) => {
-      const bounds = imageFrame.getBoundingClientRect();
-      const x = ((event.clientX - bounds.left) / bounds.width) * 100;
-      const y = ((event.clientY - bounds.top) / bounds.height) * 100;
-      productImage.style.transformOrigin = `${x}% ${y}%`;
-      imageFrame.classList.add("is-zoomed");
-    });
-    imageFrame.addEventListener("pointerleave", () => {
-      imageFrame.classList.remove("is-zoomed");
-      productImage.style.transformOrigin = "center";
-    });
+  function setZoomScale(scale) {
+    zoomState.scaleStart = zoomState.scale;
+    zoomState.targetScale = scale;
+    zoomState.scaleStartedAt = performance.now();
+  }
+
+  function applyZoomTransform() {
+    const transform =
+      `translate(${zoomState.x}px, ${zoomState.y}px) scale(${zoomState.scale})`;
+    if (!zoomAnimation) {
+      zoomAnimation = productImage.animate(
+        [{ transform }, { transform }],
+        { duration: 1000, fill: "both" },
+      );
+      zoomAnimation.pause();
+    }
+    zoomAnimation.effect.setKeyframes([
+      { transform, offset: 0 },
+      { transform, offset: 1 },
+    ]);
+    zoomAnimation.currentTime = 0;
+  }
+
+  function animateZoom(timestamp) {
+    const easing = 0.15;
+    const progress = Math.min(1, (timestamp - zoomState.scaleStartedAt) / 250);
+    const easedProgress = progress * progress * (3 - 2 * progress);
+    zoomState.scale =
+      zoomState.scaleStart +
+      (zoomState.targetScale - zoomState.scaleStart) * easedProgress;
+    const maxX = (frameWidth * (zoomState.scale - 1)) / 2;
+    const maxY = (frameHeight * (zoomState.scale - 1)) / 2;
+    const targetX = -zoomState.targetPointerX * maxX;
+    const targetY = -zoomState.targetPointerY * maxY;
+    zoomState.x = Math.max(
+      -maxX,
+      Math.min(maxX, zoomState.x + (targetX - zoomState.x) * easing),
+    );
+    zoomState.y = Math.max(
+      -maxY,
+      Math.min(maxY, zoomState.y + (targetY - zoomState.y) * easing),
+    );
+
+    const settled =
+      Math.abs(zoomState.targetScale - zoomState.scale) < 0.002 &&
+      Math.abs(targetX - zoomState.x) < 0.1 &&
+      Math.abs(targetY - zoomState.y) < 0.1;
+    if (settled) {
+      zoomState.scale = zoomState.targetScale;
+      zoomState.x = targetX;
+      zoomState.y = targetY;
+      if (!pointerInside) {
+        zoomAnimation?.cancel();
+        zoomAnimation = null;
+      } else {
+        applyZoomTransform();
+      }
+      animationFrame = 0;
+      return;
+    }
+
+    applyZoomTransform();
+    animationFrame = window.requestAnimationFrame(animateZoom);
+  }
+
+  function requestZoomFrame() {
+    if (!animationFrame) {
+      animationFrame = window.requestAnimationFrame(animateZoom);
+    }
+  }
+
+  function setZoomTarget(event) {
+    if (!imageReady) return;
+    const bounds = imageFrame.getBoundingClientRect();
+    frameWidth = imageFrame.clientWidth;
+    frameHeight = imageFrame.clientHeight;
+    const localX = event.clientX - bounds.left - imageFrame.clientLeft;
+    const localY = event.clientY - bounds.top - imageFrame.clientTop;
+    zoomState.targetPointerX = Math.max(
+      -1,
+      Math.min(1, (localX - frameWidth / 2) / (frameWidth / 2)),
+    );
+    zoomState.targetPointerY = Math.max(
+      -1,
+      Math.min(1, (localY - frameHeight / 2) / (frameHeight / 2)),
+    );
+    requestZoomFrame();
+  }
+
+  function startZoom(event) {
+    if (!imageReady) return;
+    pointerInside = true;
+    imageFrame.classList.add("is-zoomed");
+    setZoomScale(2.5);
+    setZoomTarget(event);
+  }
+
+  function stopZoom() {
+    pointerInside = false;
+    imageFrame.classList.remove("is-zoomed");
+    zoomState.targetPointerX = 0;
+    zoomState.targetPointerY = 0;
+    setZoomScale(1);
+    requestZoomFrame();
+  }
+
+  productImage.addEventListener("load", () => {
+    imageReady = productImage.naturalWidth > 0;
+  });
+  productImage.addEventListener("error", () => {
+    imageReady = false;
+    stopZoom();
+  });
+
+  if (canHover && imageMotionQuery.matches) {
+    imageFrame.addEventListener("pointerenter", startZoom);
+    imageFrame.addEventListener("pointermove", setZoomTarget);
+    imageFrame.addEventListener("pointerleave", stopZoom);
     imageFrame.addEventListener("focus", () => {
-      productImage.style.transformOrigin = "center";
+      if (!imageReady) return;
+      pointerInside = true;
+      zoomState.targetPointerX = 0;
+      zoomState.targetPointerY = 0;
       imageFrame.classList.add("is-zoomed");
+      setZoomScale(2.5);
+      requestZoomFrame();
     });
-    imageFrame.addEventListener("blur", () => {
-      imageFrame.classList.remove("is-zoomed");
-      productImage.style.transformOrigin = "center";
-    });
-  } else {
+    imageFrame.addEventListener("blur", stopZoom);
+  } else if (!canHover) {
     imageFrame.addEventListener("click", openImageDialog);
   }
   imageFrame.addEventListener("keydown", (event) => {
@@ -261,12 +388,16 @@
     const photoFilter = document.querySelector("#photo-review-filter");
     const reviewForm = document.querySelector("#review-form");
     const formStatus = document.querySelector("#review-form-status");
+    const user = window.FYAuth.getCurrentUser();
     const storageKey = `fy_reviews_${currentProduct.id}`;
-    const helpfulKey = `fy_helpful_${currentProduct.id}`;
+    const helpfulKey = user
+      ? `fy_helpful_${user.id}_${currentProduct.id}`
+      : null;
     const examples = window.FIND_YOUR_SAMPLE_REVIEWS[currentProduct.id] || [];
+    const promptTimers = new WeakMap();
     let visibleCount = 3;
     let userReviews = readUserReviews();
-    let helpfulCounts = readHelpfulCounts();
+    let helpfulVotes = readHelpfulVotes();
 
     function showStorageError(error) {
       formStatus.textContent =
@@ -294,27 +425,23 @@
       }
     }
 
-    function readHelpfulCounts() {
+    function readHelpfulVotes() {
+      if (!user) return new Set();
       try {
         const stored = JSON.parse(localStorage.getItem(helpfulKey) || "[]");
-        return stored && typeof stored === "object" && !Array.isArray(stored)
-          ? Object.fromEntries(
-              Object.entries(stored).filter(
-                ([, count]) => Number.isInteger(count) && count >= 0,
-              ),
-            )
-          : {};
+        return new Set(
+          Array.isArray(stored)
+            ? stored.filter((reviewId) => typeof reviewId === "string")
+            : [],
+        );
       } catch (error) {
         showStorageError(error);
-        return {};
+        return new Set();
       }
     }
 
     function allReviews() {
-      return [...userReviews, ...examples].map((review) => ({
-        ...review,
-        helpful: helpfulCounts[review.id] ?? review.helpful,
-      }));
+      return [...userReviews, ...examples];
     }
 
     function saveUserReviews() {
@@ -327,14 +454,41 @@
       }
     }
 
-    function saveHelpfulCounts() {
+    function saveHelpfulVotes() {
       try {
-        localStorage.setItem(helpfulKey, JSON.stringify(helpfulCounts));
+        localStorage.setItem(helpfulKey, JSON.stringify([...helpfulVotes]));
         return true;
       } catch (error) {
         showStorageError(error);
         return false;
       }
+    }
+
+    function createLoginPrompt() {
+      const prompt = document.createElement("p");
+      prompt.className = "review-login-prompt";
+      prompt.setAttribute("role", "status");
+      prompt.setAttribute("aria-live", "polite");
+      const link = document.createElement("a");
+      link.href = "login.html";
+      link.textContent = "로그인";
+      prompt.append("로그인 후 이용하실 수 있습니다. ", link);
+      prompt.hidden = true;
+      prompt.addEventListener("focusout", () => {
+        window.setTimeout(() => {
+          if (!prompt.contains(document.activeElement)) prompt.hidden = true;
+        });
+      });
+      return prompt;
+    }
+
+    function showLoginPrompt(prompt) {
+      prompt.hidden = false;
+      window.clearTimeout(promptTimers.get(prompt));
+      const timer = window.setTimeout(() => {
+        if (!prompt.contains(document.activeElement)) prompt.hidden = true;
+      }, 3500);
+      promptTimers.set(prompt, timer);
     }
 
     function updateSummary(reviews) {
@@ -442,28 +596,45 @@
       const helpful = document.createElement("button");
       helpful.className = "review-helpful";
       helpful.type = "button";
-      const alreadyMarked = Object.prototype.hasOwnProperty.call(
-        helpfulCounts,
-        review.id,
-      );
-      helpful.disabled = alreadyMarked;
-      helpful.textContent = alreadyMarked
-        ? `도움돼요 ${review.helpful} · 참여 완료`
-        : `도움돼요 ${review.helpful}`;
+      helpful.setAttribute("aria-disabled", String(!user));
+      const loginPrompt = createLoginPrompt();
+      const helpfulGroup = document.createElement("div");
+      helpfulGroup.className = "review-helpful-group";
+
+      function updateHelpfulButton() {
+        const active = helpfulVotes.has(review.id);
+        helpful.setAttribute("aria-pressed", String(active));
+        helpful.classList.toggle("is-active", active);
+        helpful.textContent = `도움돼요 ${review.helpful + Number(active)}${active ? " · 취소" : ""}`;
+      }
+
+      updateHelpfulButton();
+      helpful.addEventListener("focus", () => {
+        if (!user) showLoginPrompt(loginPrompt);
+      });
       helpful.addEventListener("click", () => {
-        if (Object.prototype.hasOwnProperty.call(helpfulCounts, review.id)) {
+        if (!user) {
+          showLoginPrompt(loginPrompt);
           return;
         }
-        helpfulCounts[review.id] = review.helpful + 1;
-        if (saveHelpfulCounts()) {
-          helpful.disabled = true;
-          helpful.textContent = `도움돼요 ${helpfulCounts[review.id]} · 참여 완료`;
+        const wasActive = helpfulVotes.has(review.id);
+        if (wasActive) {
+          helpfulVotes.delete(review.id);
         } else {
-          delete helpfulCounts[review.id];
+          helpfulVotes.add(review.id);
         }
+        if (!saveHelpfulVotes()) {
+          if (wasActive) {
+            helpfulVotes.add(review.id);
+          } else {
+            helpfulVotes.delete(review.id);
+          }
+        }
+        updateHelpfulButton();
       });
 
-      item.append(header, tags, content, helpful);
+      helpfulGroup.append(helpful, loginPrompt);
+      item.append(header, tags, content, helpfulGroup);
       return item;
     }
 
@@ -487,8 +658,22 @@
       renderReviews();
     });
 
+    const formLoginPrompt = createLoginPrompt();
+    reviewForm.append(formLoginPrompt);
+    reviewForm.addEventListener("focusin", () => {
+      if (!user) showLoginPrompt(formLoginPrompt);
+    });
+    reviewForm
+      .querySelector('[type="submit"]')
+      .addEventListener("click", () => {
+        if (!user) showLoginPrompt(formLoginPrompt);
+      });
     reviewForm.addEventListener("submit", (event) => {
       event.preventDefault();
+      if (!user) {
+        showLoginPrompt(formLoginPrompt);
+        return;
+      }
       if (!reviewForm.reportValidity()) return;
 
       const formData = new FormData(reviewForm);

@@ -40,17 +40,97 @@
   font-weight: 500;
 }
 
-.mypage-orders {
-  scroll-snap-align: none;
-}
-
 .mypage-status:empty {
   display: none;
+}
+
+.attendance-calendar {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 1px;
+  border: var(--border-soft);
+  background: var(--color-line);
+}
+
+.attendance-cell {
+  display: grid;
+  min-width: 0;
+  min-height: 44px;
+  place-items: center;
+  background: var(--color-cream);
+  font-size: 0.9rem;
+}
+
+.attendance-weekday {
+  min-height: 36px;
+  background: var(--color-sub);
+  color: var(--color-muted);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.attendance-day.is-attended {
+  background: var(--color-brand);
+  color: var(--color-ink);
+  font-weight: 600;
+}
+
+.attendance-day.is-today {
+  outline: 2px solid var(--color-brand-dark);
+  outline-offset: -2px;
+}
+
+.attendance-day.is-future,
+.attendance-day.is-past {
+  color: var(--color-muted);
+}
+
+.attendance-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+.attendance-controls p {
+  margin: 0;
+}
+
+.attendance-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+}
+
+.attendance-stats > div {
+  padding: var(--space-sm);
+  border: var(--border-soft);
+  background: var(--color-surface);
+}
+
+.attendance-stats dt {
+  color: var(--color-muted);
+  font-size: 0.85rem;
+}
+
+.attendance-stats dd {
+  margin: 0.25rem 0 0;
+  font-weight: 600;
 }
 
 @media (max-width: 40rem) {
   .coupon-card,
   .order-card {
     padding: var(--space-sm);
+  }
+
+  .attendance-stats {
+    gap: var(--space-xs);
+  }
+
+  .attendance-stats > div {
+    padding: var(--space-xs);
   }
 }

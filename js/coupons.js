@@ -1,6 +1,25 @@
 (() => {
   const COUPONS_KEY = "fy_coupons";
   const ORDERS_KEY = "fy_orders";
+  const ATTENDANCE_COUPON_RULES = Object.freeze({
+    tenDay: Object.freeze({
+      consecutiveDays: 10,
+      name: "출석 10% 쿠폰",
+      type: "percent",
+      value: 10,
+      minOrderAmount: 30000,
+      maxDiscountAmount: 10000,
+      validityDays: 30,
+    }),
+    fullMonth: Object.freeze({
+      name: "출석 30% 쿠폰",
+      type: "percent",
+      value: 30,
+      minOrderAmount: 50000,
+      maxDiscountAmount: 30000,
+      validityDays: 30,
+    }),
+  });
 
   function readList(key) {
     const stored = localStorage.getItem(key);
@@ -26,6 +45,15 @@
     const expiration = new Date();
     expiration.setDate(expiration.getDate() + days);
     return expiration.toISOString().slice(0, 10);
+  }
+
+  function localDateAfterDays(days) {
+    const expiration = new Date();
+    expiration.setDate(expiration.getDate() + days);
+    const year = expiration.getFullYear();
+    const month = String(expiration.getMonth() + 1).padStart(2, "0");
+    const day = String(expiration.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
   }
 
   function createId() {
@@ -74,6 +102,33 @@
     return readList(COUPONS_KEY).filter((coupon) => coupon.userId === userId);
   }
 
+  function issueAttendanceCoupon(user, kind, yearMonth) {
+    if (!user || !user.id || !/^\d{4}-\d{2}$/.test(yearMonth)) {
+      throw new Error("회원과 출석 월을 확인한 뒤 쿠폰을 발급해 주세요.");
+    }
+    const rule = ATTENDANCE_COUPON_RULES[kind];
+    if (!rule) throw new Error("출석 쿠폰 종류를 확인할 수 없습니다.");
+
+    const coupons = readList(COUPONS_KEY);
+    const id = `attendance-${kind}-${yearMonth}-${user.id}`;
+    if (coupons.some((coupon) => coupon.id === id)) return false;
+
+    const coupon = {
+      id,
+      userId: user.id,
+      name: rule.name,
+      type: rule.type,
+      value: rule.value,
+      minOrderAmount: rule.minOrderAmount,
+      maxDiscountAmount: rule.maxDiscountAmount,
+      expiresAt: localDateAfterDays(rule.validityDays),
+      used: false,
+      firstPurchaseOnly: false,
+    };
+    writeCoupons([...coupons, coupon]);
+    return true;
+  }
+
   function getEligibility(coupon, subtotal, userId) {
     if (!coupon || coupon.userId !== userId) {
       return { eligible: false, reason: "이 회원에게 발급된 쿠폰이 아닙니다." };
@@ -118,7 +173,9 @@
   }
 
   window.FYCoupons = Object.freeze({
+    ATTENDANCE_COUPON_RULES,
     issueInitialCoupons,
+    issueAttendanceCoupon,
     getCoupons,
     getEligibility,
     markUsed,

@@ -71,24 +71,6 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--header-height) + 8px);
-  scroll-snap-type: y mandatory;
-}
-
-html.scroll-proximity {
-  scroll-snap-type: y proximity;
-}
-
-main > section,
-.site-footer,
-.ticker {
-  scroll-snap-align: start;
-  scroll-margin-top: var(--header-height);
-}
-
-.long-section,
-.shop-product-section,
-.product-section {
-  scroll-snap-align: none;
 }
 
 body {
@@ -548,6 +530,175 @@ summary:focus-visible,
   white-space: nowrap;
 }
 
+.floating-cart-wrap {
+  position: fixed;
+  right: 16px;
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  z-index: 50;
+}
+
+.floating-cart {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  min-height: 42px;
+  padding: 0 0.75rem;
+  border: 1px solid var(--color-ink);
+  border-radius: 2px;
+  background: var(--color-ink);
+  color: var(--color-cream);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+}
+
+.floating-cart-popover {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 8px);
+  width: min(20rem, calc(100vw - 32px));
+  padding: var(--space-sm);
+  border: var(--border-soft);
+  border-radius: 2px;
+  background: var(--color-cream);
+  box-shadow: var(--shadow-small);
+}
+
+.floating-cart-popover::after {
+  position: absolute;
+  right: 0;
+  bottom: -12px;
+  left: 0;
+  height: 12px;
+  content: "";
+}
+
+.floating-cart-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  min-width: 0;
+}
+
+.floating-cart-image {
+  display: grid;
+  flex: 0 0 56px;
+  width: 56px;
+  height: 56px;
+  overflow: hidden;
+  place-items: center;
+  border: var(--border-soft);
+  background: var(--color-surface);
+}
+
+.floating-cart-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.floating-cart-copy {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+
+.floating-cart-name {
+  overflow: hidden;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.floating-cart-quantity {
+  font-size: 0.85rem;
+}
+
+.floating-cart-options {
+  overflow: hidden;
+  color: var(--color-muted);
+  font-size: 0.75rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.floating-cart-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--space-xs);
+  font-size: 0.8rem;
+}
+
+.floating-cart-navigation button {
+  min-width: 32px;
+  min-height: 32px;
+  border: var(--border-soft);
+  border-radius: 2px;
+  background: var(--color-surface);
+  color: var(--color-ink);
+  cursor: pointer;
+}
+
+.floating-cart-empty {
+  margin: 0;
+  padding: var(--space-sm) 0;
+  color: var(--color-muted);
+  font-size: 0.85rem;
+}
+
+.floating-cart-view {
+  display: block;
+  margin-top: var(--space-xs);
+  padding-top: var(--space-xs);
+  border-top: var(--border-soft);
+  font-size: 0.8rem;
+  text-align: center;
+  text-decoration: none;
+}
+
+.floating-cart-view:hover,
+.floating-cart-view:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.floating-cart span + span {
+  padding-left: var(--space-xs);
+  border-left: 1px solid var(--color-line);
+}
+
+body.has-floating-cart {
+  padding-bottom: calc(58px + env(safe-area-inset-bottom, 0px));
+}
+
+@media (min-width: 1024px) {
+  .floating-cart-wrap {
+    right: 24px;
+    bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+  }
+
+  body.has-floating-cart {
+    padding-bottom: calc(66px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .floating-cart.is-pulsing {
+    animation: floating-cart-pulse 300ms ease-out;
+  }
+
+  @keyframes floating-cart-pulse {
+    50% {
+      transform: scale(1.08);
+    }
+  }
+}
+
 .header-utilities a,
 .header-utilities button {
   padding: 0.4rem 0;
@@ -577,7 +728,6 @@ summary:focus-visible,
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-    scroll-snap-type: y proximity;
   }
 
   *,
@@ -588,6 +738,19 @@ summary:focus-visible,
     scroll-behavior: auto !important;
   }
 }
+
+/* PC 포인터 환경에서 짧은 구역만 proximity 스냅합니다. 비활성화하려면 이 블록을 삭제하세요. */
+@media (min-width: 1024px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-snap-type: y proximity;
+  }
+
+  .snap-section {
+    scroll-snap-align: start;
+    scroll-margin-top: var(--header-height);
+  }
+}
+
 /* ---------- 6. 마우스 커서 ---------- */
 @media (hover: hover) and (pointer: fine) {
   /* 기본 : 화살표 끝이 (1, 1) 위치 */

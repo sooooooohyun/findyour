@@ -5,56 +5,85 @@
     return `${month}월 ${day}일`;
   }
 
+  function getGroupPreorderDate(order) {
+    if (order.shippingGroup?.preorderDate) {
+      return order.shippingGroup.preorderDate;
+    }
+    const items = order.items || [];
+    if (
+      items.length > 0 &&
+      items.every(
+        (item) => item.preorder?.date === items[0].preorder?.date,
+      ) &&
+      items[0].preorder?.date
+    ) {
+      return items[0].preorder.date;
+    }
+    return null;
+  }
+
   const empty = document.querySelector("[data-order-empty]");
   const details = document.querySelector("[data-order-details]");
-  const order = window.FYOrders.getLastOrder();
-  if (!order) {
+  const orders = window.FYOrders.getLastOrders();
+  if (orders.length === 0) {
     empty.hidden = false;
     return;
   }
 
   const numberFormat = new Intl.NumberFormat("ko-KR");
   const money = (amount) => `${numberFormat.format(amount)}원`;
-  const pricing = window.FYPricing.calculatePricing(order.items, order.couponSnapshot);
-  document.querySelector("[data-order-number]").textContent = order.orderNumber;
+  const groups = document.querySelector("[data-order-groups]");
+  const template = document.querySelector("[data-order-template]");
+  const paymentTotal =
+    Number.isFinite(orders[0].paymentTotal)
+      ? orders[0].paymentTotal
+      : orders.reduce((sum, order) => sum + Number(order.total || 0), 0);
+  document.querySelector("[data-payment-total]").textContent =
+    money(paymentTotal);
   document.querySelector("[data-order-date]").textContent =
-    `주문일 ${new Date(order.orderedAt).toLocaleString("ko-KR")}`;
-  document.querySelector("[data-subtotal]").textContent = money(pricing.subtotal);
-  document.querySelector("[data-discount]").textContent =
-    pricing.discount > 0 ? `-${money(pricing.discount)}` : money(0);
-  document.querySelector("[data-shipping]").textContent = money(pricing.shipping);
-  document.querySelector("[data-total]").textContent = money(pricing.total);
-  document.querySelector("[data-estimated-delivery]").textContent =
-    new Date(order.estimatedDeliveryAt).toLocaleDateString("ko-KR");
+    `주문일 ${new Date(orders[0].orderedAt).toLocaleString("ko-KR")}`;
 
-  const list = document.querySelector("[data-order-items]");
-  order.items.forEach((item) => {
-    const row = document.createElement("li");
-    row.className = "order-complete-item";
-    const description = document.createElement("div");
-    const name = document.createElement("strong");
-    name.textContent = item.name;
-    const options = document.createElement("p");
-    options.textContent = `${item.color} / ${item.size} / ${item.quantity}개`;
-    const price = document.createElement("strong");
-    price.textContent = money(item.unitPrice * item.quantity);
-    description.append(name, options);
-    if (item.preorder) {
-      const preorder = document.createElement("p");
-      preorder.className = "preorder-note";
-      preorder.textContent = `${formatPreorderDate(item.preorder.date)} 출고 예정`;
-      description.append(preorder);
-    }
-    row.append(description, price);
-    list.append(row);
+  orders.forEach((order) => {
+    const fragment = template.content.cloneNode(true);
+    const group = fragment.querySelector(".order-group");
+    group.querySelector("[data-order-number]").textContent = order.orderNumber;
+    group.querySelector("[data-subtotal]").textContent = money(order.subtotal);
+    group.querySelector("[data-discount]").textContent =
+      order.couponDiscount > 0 ? `-${money(order.couponDiscount)}` : money(0);
+    group.querySelector("[data-shipping]").textContent = money(order.shipping);
+    group.querySelector("[data-total]").textContent = money(order.total);
+
+    const preorderDate = getGroupPreorderDate(order);
+    group.querySelector("[data-delivery-label]").textContent = preorderDate
+      ? "출고 예정일"
+      : "예상 배송일";
+    group.querySelector("[data-estimated-delivery]").textContent = preorderDate
+      ? `${formatPreorderDate(preorderDate)} 출고`
+      : new Date(order.estimatedDeliveryAt).toLocaleDateString("ko-KR");
+
+    const list = group.querySelector("[data-order-items]");
+    order.items.forEach((item) => {
+      const row = document.createElement("li");
+      row.className = "order-complete-item";
+      const description = document.createElement("div");
+      const name = document.createElement("strong");
+      name.textContent = item.name;
+      const options = document.createElement("p");
+      options.textContent = `${item.color} / ${item.size} / ${item.quantity}개`;
+      const price = document.createElement("strong");
+      price.textContent = money(item.unitPrice * item.quantity);
+      description.append(name, options);
+      if (item.preorder) {
+        const preorder = document.createElement("p");
+        preorder.className = "preorder-note";
+        preorder.textContent = `${formatPreorderDate(item.preorder.date)} 출고 예정`;
+        description.append(preorder);
+      }
+      row.append(description, price);
+      list.append(row);
+    });
+    groups.append(fragment);
   });
+
   details.hidden = false;
-  const hasPreorder = order.items.some((item) => item.preorder);
-  const hasRegular = order.items.some((item) => !item.preorder);
-  document.querySelector("[data-delivery-label]").textContent =
-    hasPreorder && hasRegular
-      ? "일반 상품 예상 배송일"
-      : hasPreorder
-        ? "예약 상품 출고 예정일"
-        : "예상 배송일";
 })();

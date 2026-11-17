@@ -156,8 +156,8 @@
   opacity: 0;
   transform: translateX(-1rem);
   transition:
-    opacity 0.55s ease-out,
-    transform 0.55s ease-out;
+    opacity 0.45s ease-out,
+    transform 0.45s ease-out;
 }
 
 .story-list.is-animated .story-item:nth-child(even) {
@@ -196,6 +196,15 @@
   .story-list.is-animated .story-item,
   .story-list.is-animated .story-item:nth-child(even) {
     transform: translateX(-1rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .story-list.is-animated .story-item,
+  .story-list.is-animated .story-item:nth-child(even) {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
 

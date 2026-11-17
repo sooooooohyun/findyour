@@ -60,6 +60,7 @@
       "색이 차분해서 다른 아이템과 같이 쓰기 좋네요.",
     ],
   };
+  const productSpecificReviews = {};
 
   function hash(value) {
     return Array.from(value).reduce(
@@ -73,7 +74,7 @@
     const seed = hash(product.id);
     const count = 3 + (seed % 4);
 
-    return Array.from({ length: count }, (_, index) => {
+    const generatedReviews = Array.from({ length: count }, (_, index) => {
       const variant = (seed + index) % variants.length;
       const day = String(2 + ((seed + index * 3) % 14)).padStart(2, "0");
       const score = 3 + ((seed + index) % 3);
@@ -90,6 +91,8 @@
         sample: true,
       };
     });
+
+    return [...(productSpecificReviews[product.id] || []), ...generatedReviews];
   }
 
   window.FIND_YOUR_SAMPLE_REVIEWS = Object.fromEntries(

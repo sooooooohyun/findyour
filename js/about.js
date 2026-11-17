@@ -11,19 +11,47 @@
     return;
   }
 
+  const pendingReveals = new WeakMap();
   storyList.classList.add("is-animated");
 
   const observer = new IntersectionObserver(
     (entries) => {
-      if (!entries.some((entry) => entry.isIntersecting)) return;
+      let delay = 0;
+      entries
+        .slice()
+        .sort(
+          (left, right) =>
+            left.boundingClientRect.top - right.boundingClientRect.top,
+        )
+        .forEach((entry) => {
+          const item = entry.target;
+          if (entry.isIntersecting) {
+            if (item.classList.contains("is-visible") || pendingReveals.has(item)) {
+              return;
+            }
+            const timer = window.setTimeout(() => {
+              item.classList.add("is-visible");
+              pendingReveals.delete(item);
+            }, delay);
+            pendingReveals.set(item, timer);
+            delay += 90;
+            return;
+          }
 
-      observer.disconnect();
-      items.forEach((item, index) => {
-        window.setTimeout(() => item.classList.add("is-visible"), index * 100);
-      });
+          const timer = pendingReveals.get(item);
+          if (timer !== undefined) {
+            window.clearTimeout(timer);
+            pendingReveals.delete(item);
+          }
+          if (item.getBoundingClientRect().top > 0) {
+            item.classList.remove("is-visible");
+          } else {
+            item.classList.add("is-visible");
+          }
+        });
     },
-    { threshold: 0.15 },
+    { threshold: 0.12 },
   );
 
-  observer.observe(storyList);
+  items.forEach((item) => observer.observe(item));
 })();

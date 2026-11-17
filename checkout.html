@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko" class="scroll-proximity">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -21,14 +21,14 @@
             <li><a href="about.html">소개</a></li><li><a href="location.html">오는 길</a></li><li><a href="contact.html">문의</a></li>
           </ul>
         </nav>
-        <div class="header-utilities"><a href="cart.html" aria-label="장바구니, 담긴 수량 0개">CART <span data-cart-count>0</span></a><a href="login.html" data-auth-link>LOGIN</a><button type="button" data-logout hidden>LOGOUT</button><span class="sr-only" data-header-status aria-live="polite"></span></div>
+        <div class="header-utilities"><a href="login.html" data-auth-link>LOGIN</a><button type="button" data-logout hidden>LOGOUT</button><span class="sr-only" data-header-status aria-live="polite"></span></div>
       </div>
     </header>
     <main>
       <section class="page-head" aria-labelledby="page-title"><div class="container"><h1 id="page-title">ORDER</h1><p>배송 정보를 확인하고 주문을 완료해 주세요.</p></div></section>
       <section class="section" aria-labelledby="checkout-title">
         <div class="container checkout-content">
-          <div class="cart-empty" data-checkout-empty hidden><p>주문할 상품이 없습니다.</p><a class="btn" href="cart.html">장바구니로 돌아가기</a></div>
+          <div class="cart-empty" data-checkout-empty hidden><p data-checkout-empty-message>주문할 상품이 없습니다.</p><a class="btn" href="cart.html">장바구니로 돌아가기</a></div>
           <form class="checkout-form" data-checkout-form>
             <h2 id="checkout-title">주문자 정보</h2>
             <div class="checkout-fields">
@@ -37,8 +37,16 @@
               <label>연락처<input name="buyerPhone" type="tel" autocomplete="tel" required /></label>
               <label>받는 분<input name="recipientName" autocomplete="shipping name" required /></label>
               <label>받는 분 연락처<input name="recipientPhone" type="tel" autocomplete="shipping tel" required /></label>
-              <label class="checkout-address">주소<input name="address" autocomplete="shipping street-address" required /></label>
-              <label class="checkout-address">상세 주소<input name="addressDetail" autocomplete="address-line2" /></label>
+              <div class="checkout-address">
+                <label for="postcode">우편번호</label>
+                <div class="checkout-postcode-row">
+                  <input id="postcode" name="postcode" autocomplete="shipping postal-code" readonly aria-describedby="address-status" />
+                  <button class="btn btn-light" type="button" data-open-address aria-haspopup="dialog" disabled>주소 검색</button>
+                </div>
+              </div>
+              <label class="checkout-address" for="address">도로명 주소<input id="address" name="address" autocomplete="shipping street-address" aria-describedby="address-status" required readonly /></label>
+              <label class="checkout-address" for="addressDetail">상세 주소<input id="addressDetail" name="addressDetail" autocomplete="address-line2" required /></label>
+              <p class="checkout-address checkout-address-status" id="address-status" data-address-status role="status" aria-live="polite" hidden></p>
               <label class="checkout-address">배송 메모<textarea name="shippingMemo" rows="3" maxlength="300"></textarea></label>
             </div>
             <fieldset class="payment-methods">
@@ -80,6 +88,15 @@
             <button class="btn" type="button" data-apply-coupon>적용</button>
           </div>
         </form>
+      </dialog>
+      <dialog class="address-dialog" data-address-dialog aria-labelledby="address-dialog-title">
+        <div class="address-dialog-inner">
+          <div class="address-dialog-heading">
+            <h2 id="address-dialog-title">도로명 주소 검색</h2>
+            <button class="btn btn-light" type="button" data-close-address>닫기</button>
+          </div>
+          <div class="address-search-frame" data-postcode-frame></div>
+        </div>
       </dialog>
     </main>
     <footer class="site-footer"><div class="container"><div class="footer-grid"><div><p class="footer-logo"><img src="images/logo.svg" alt="FIND YOUR __ 로고" /></p><p class="footer-note">나만의 취향을 발견하는 차분하고 세련된 패션 공간</p></div><nav aria-label="꼬리말 메뉴"><p class="footer-title">INFO</p><ul class="footer-list"><li><a href="about.html">ABOUT</a></li><li><a href="contact.html">CUSTOMER SERVICE</a></li><li><a href="contact.html#faq">FAQ</a></li></ul></nav><div><p class="footer-title">SNS</p><ul class="footer-list"><li><a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a></li><li><a href="https://www.threads.com/" target="_blank" rel="noopener noreferrer">Threads</a></li><li><a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">YouTube</a></li></ul></div></div><div class="footer-bottom"><p><a href="#">이용약관</a><a href="#">개인정보 처리방침</a></p><p>© 2026 FIND YOUR __. 본 사이트는 웹 제작 과제용 가상 사이트입니다.</p></div></div></footer>
