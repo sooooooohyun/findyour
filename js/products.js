@@ -22,6 +22,26 @@
 
   function makeProduct(id, category, name, price, additionalCategories) {
     const categories = [category, ...(additionalCategories || [])];
+    let colors;
+    switch (id) {
+      case "new-02":
+        colors = ["네이비", "머스타드", "핑크"];
+        break;
+      case "new-03":
+        colors = ["핑크", "라벤더", "블루"];
+        break;
+      case "new-04":
+        colors = ["크림", "모카", "세이지 그린"];
+        break;
+      case "best-01":
+        colors = ["아이보리", "민트", "스카이 블루"];
+        break;
+      case "best-02":
+        colors = ["핑크", "옐로우", "스카이 블루"];
+        break;
+      default:
+        colors = ["아이보리", "베이지", "핑크"];
+    }
     const product = {
       id,
       category,
@@ -31,7 +51,7 @@
       image: `images/shop/${id.replace("-", " ")}.jpg`,
       description: `${categoryDescriptions[category]} ${name} 상품입니다.`,
       sizes: category === "acc" ? ["FREE"] : ["S", "M", "L"],
-      colors: ["아이보리", "베이지", "핑크"],
+      colors: colors,
     };
     if (id === "best-01" || id === "best-05") {
       product.preorder = { date: PREORDER_DATE };
