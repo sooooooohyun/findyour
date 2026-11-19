@@ -39,6 +39,18 @@
       case "best-02":
         colors = ["핑크", "옐로우", "스카이 블루"];
         break;
+      case "best-03":
+        colors = ["블랙"];
+        break;
+      case "best-04":
+        colors = ["핑크", "민트", "네이비"];
+        break;
+      case "best-05":
+        colors = ["아이보리", "블랙", "그레이"];
+        break;
+      case "best-06":
+        colors = ["핑크", "퍼플"];
+        break;
       default:
         colors = ["아이보리", "베이지", "핑크"];
     }
